@@ -1,4 +1,4 @@
-*Last update: Oct 8, 2015
+*Last update: Nov 14, 2015
 
 *Commented by David Rosenberg - Oct 15, 2015. Comments are prefaced by *DER - ...
 
@@ -38,32 +38,29 @@ $OffText
 
 SETS     s       sub-indicators
          j       river netowrk nodes
-         wt(j)   impounded wetlands
+Alias   (j,k);
+SETS     wt(j)   impounded wetlands
          dem(j)    demand sites
          v(j)    reservoirs
 
 ;
 
-Alias   (j,k);
+
 
 SETS
 
-*        link(j,k)  river links from node j to k /#j.#k/
-
-         dv(j,k)   diversions
-         rf(j,k)   return flow
-
-         f       type of fish species              /trout/
+         y       type of fish species              /trout/
          n       type of vegetation species        /cottonwood/
-         t       timesteps in months               /1*12/
+         t       timesteps in months
+         month   timestep for the RSI function     /m1*m12/
 
          R_par_indx indexes for the RSI relationship   /R_par1, R_par2, R_par3, R_par4/
          W_par_indx indexes for the WSI monthly realtionship   /W_par1, W_par2/
 
-         EleV_par_indx indexes for the reservoir volume elevation curve /EleV_par1, EleV_par2, EleV_par3/
+         RA_par_indx indexes for the reservoir volume elevation curve /RA_par1, RA_par2/
 
-         sf_par_indx    index for stage-flow relationship parameters /sf1_par, sf2_par/
-         wf_par_indx    index for width-flow relationship parameters /wf1_par, wf2_par/
+         sf_par_indx    index for stage-flow relationship parameters /sf_par1, sf_par2/
+         wf_par_indx    index for width-flow relationship parameters /wf_par1, wf_par2/
          wsi_par_indx  index for wetlands water availbility relationship /wsi_par1, wsi_par2/
 
 
@@ -74,7 +71,9 @@ SETS
 PARAMETERS
          linkexist(j,k)  link from j to k exists (1=yes and 0=no)
          envSiteExist(j,k)    environmental site exists (1=yes and 0=no) where sensitive habitat is located and data were collected
-         wght(s,j,t)     spatial and temporal weights set by stakeholders [0: no important - 1: important]
+         returnFlow(j,k)   define if a return flow exists on a link   (1=yes and 0=no)
+         Diversion(j,k)   define if a diversion exists on a link   (1=yes and 0=no)
+         wght(s,j,k,t)     spatial and temporal weights set by stakeholders [0: no important - 1: important]
          theta(j,k)        topological slope
          aw(wt,t)        Impounded wetlands area [m2]
          fmin(j,k,n)       minimum flood depth required for species n
@@ -83,28 +82,30 @@ PARAMETERS
 
          lss(j,k,t)      net losses on link j entering k [%] - applicable to all nodes
          evap(v,t)       evaporation losses [m per month]
-         ar(v,t)         reservoir area [m2]
+
          cons(dem,t)     consupmtive use fraction expressed as [%] of inflow received at site d
          lng(j,k)          length of river segment
          minstor(v)      inactive reservoir storage [m3]
          maxstor(v)      storage capacity [m3]
          dReq(dem,t)       demand requirements [m3 per month]
-         dCap(j,dem,t)     diversion link capacity [m3 per month]
+         dCap(j,dem)     diversion link capacity [m3 per month]
          dmin(j,k,t)       minimum instream flow requirement [m3 per month]
-         cst(f)          unit cost of implementing management objective
+         cst(y)          unit cost of implementing management objective
 
 
          vegD(j,k,t,n)     Distance between floodplain vegetation and river bank
 
 
-         EleV_par(v, EleV_par_indx)     Reservoir elevation volume curve parameters
+         RA_par(v, RA_par_indx)     Reservoir area volume curve parameters
 
-         R_par(f,t,R_par_indx)           Riverine Suitability Index equation parameters
+         R_par(y,t,R_par_indx)           Riverine Suitability Index equation parameters
          W_par(wt,t,W_par_indx)           Wetlands Subindicator equation parameters
 
          sf_par(j,k,sf_par_indx)           Stage-flow relationship parameters
          wf_par(j,k,wf_par_indx)           Width-flow relationship parameters
          wsi_par(wt,t,wsi_par_indx)       Wetlands suitability index monthly relationship parameters
+
+         RSIequationNum                   /m1 1,m2 1,m3 2,m4 2,m5 2,m6 2,m7 2,m8 2,m9 3,m10 3,m11 3,m12 3/
    ;
 
 SCALARS
@@ -117,7 +118,7 @@ SCALARS
 * where CoefX is the Xth degree coefficient of the polynomial corresponding to this segment.
 * For example: 0.3X**2 -2.7*X +2.4 will have coef in the order of 2.4, -2.7, 0.3
 
-*In pwdata table:
+*In pwpdata table:
 *equation 1: Riverine Suitability Index in Jan-Feb: RSI01 for Spawn/eggs
 *equation 2: RSI in Mar-Aug RSI02 for Fry, equation3: RSI in Aug-Dec RSI03 for Juvenile
 *equation4: h index
@@ -126,64 +127,62 @@ SCALARS
 
 
 Table  pwpdata(*,*,*) '1st index: function number, 2nd index: segment number, 3rd index: degree'
-                 leftBound       0          1         2
-       1.1       0               0          0         0
-       1.2       0.25            0.25       0         0
-       1.3       0.4             0.5        0         0
-       1.4       0.5             1          0         0
-       2.1       0               0          0         0
-       2.2       0.25            0.25       0         0
-       2.3       0.5             0.5        0         0
-       2.4       1.0             1          0         0
-       3.1       0               0          0         0
-       3.2       0.25            0.75       0         0
-       3.3       0.4             1.25       0         0
-       3.4       0.5             1.5        0         0
-       4.1       0               0.2        0         0
-       4.2       150             1.0        0         0
-       5.1       -1.0            0.1        0         0
-       5.2       0.0             0.2        0         0
-       5.3       0.2             0.8        0         0
-       5.4       0.8             0.2        0         0
+                 leftBound       0          1           2
+       1.1       0               0          0           0
+       1.2       0.25            0.25       0           0
+       1.3       0.4             0.5        0           0
+       1.4       0.5             1          0           0
+       2.1       0               0          0           0
+       2.2       0.25            0.25       0           0
+       2.3       0.5             0.5        0           0
+       2.4       1.0             1          0           0
+       3.1       0               0          0           0
+       3.2       0.25            0.75       0           0
+       3.3       0.4             1.25       0           0
+       3.4       0.5             1.5        0           0
+       4.1       0               0.2        0           0
+       4.2       150             1.0        0           0
+       5.1       -1.0            0.1        0           0
+       5.2       0.0             0.2        0           0
+       5.3       0.2             0.8        0           0
+       5.4       0.8             0.2        0           0
+       6.1       0               1          0           0
+       6.2       2               2          0           0
+       6.3       8               3          0           0
+
+;
+
 
 * Write pwp data to gdx file read by external library
-$gdxout pwp.gdx
+$gdxout pwp-Nov11.gdx
 $unload pwpdata
 $gdxout
 
 * Load extrinsic function
-$funclibin pwplib pwpcclib
-
-function pwp /pwplib.pwpfunc/    ;
+$FuncLibIn pwplib pwpcclib
+Function pwp /pwplib.pwpfunc/;
 
 
 * Read sets and parameter input values from Excel
 
-$CALL GDXXRW.EXE input=WASHData-sample.xlsx output=WASH.gdx Set=s rng=SubInd!A1 Rdim=1 Set=j rng=Nodes!A1 Rdim=1 Set=wt rng=Wetlands!A1 Rdim=1 Set=dem rng=Demand!A1 Rdim=1 Set=v rng=Reservoirs!A1 Rdim=1 par=envSiteExist rng=EnvSite!A1 Rdim=1 Cdim=1  Set=dv rng=Diversions!A1 Rdim=2   Set=rf rng=ReturnFlow!A1 Rdim=2 Set=f rng=FishSpp!A1 Rdim=1 Set=n rng=VegSpp!A1 Rdim=1 Set=t rng=Month!A1 Rdim=1   par=bankdepth  rng=Bankfull!A1 Rdim= 2  Cdim=1  par=wght rng=weights!A1 Rdim=3 Cdim=1 par=theta rng=theta!A1 Rdim=1 Cdim=1  par=aw rng= AW Rdim=2 par=fmin rng=Fmin Rdim=2 Cdim=1  par=fmax rng=Fmax Rdim=2 Cdim=1  par=lss rng=lss Rdim=2 Cdim=1 par=evap rng=evap Rdim=1 Cdim=1 par=ar  rng=ResA Rdim=1 Cdim=1  par=EleV_par rng=ResElevVol Rdim=1 Cdim=1  par=Cons rng=Cons Rdim=1 Cdim=1 par=lng rng=Length Rdim=1 Cdim=1  par=minstor rng=inactive Rdim=1  par=maxstor rng=capacity Rdim=1  par=dReq rng=demandReq Rdim=1 Cdim=1 par=dCap rng=divCap Rdim=1 Cdim=1  par=dmin rng=Instream Rdim=2 Cdim=1  par=cst rng=UnitCost Rdim=1 par=VegD rng=VegD Rdim=3 Cdim=1  par=Linkexist rng=Connect!A1 Rdim=1 Cdim=1  par=R_par rng=R_par!A1 Rdim=2 Cdim=1  par=W_par rng=W_par!A1 Rdim=2 Cdim=1  par=sf_par rng=StageFlow Rdim=2 Cdim=1 par=wf_par rng=WidthFlow Rdim=2 Cdim=1   par=wsi_par rng=wp Rdim=2 Cdim=1  par=b rng=Budget
+$CALL GDXXRW.EXE input=WASH-SampleData.xlsx output=WASH-Nov11.gdx Set=s rng=SubInd!A1:A100 Rdim=1 Set=j rng=Nodes!A1:A100 Rdim=1 Set=wt rng=Wetlands!A1:A100 Rdim=1 Set=dem rng=Demand!A1:A100 Rdim=1 Set=v rng=Reservoirs!A1:A100 Rdim=1 par=envSiteExist rng=EnvSite!A1 Rdim=1 Cdim=1  par=Diversion rng=Diversions!A1 Rdim=1 Cdim=1   par=returnFlow rng=ReturnFlow!A1 Rdim=1 Cdim=1 Set=f rng=FishSpp!A1:A10 Rdim=1 Set=n rng=VegSpp!A1:A10 Rdim=1 Set=t rng=Month!A1:A100 Rdim=1   par=bankdepth  rng=Bankfull!A1 Rdim= 2  Cdim=1  par=wght rng=weights!A1 Rdim=3 Cdim=1 par=theta rng=theta!A1 Rdim=1 Cdim=1  par=aw rng=AW!A1 Rdim=2 par=fmin rng=Fmin!A1 Rdim=2 Cdim=1  par=fmax rng=Fmax!A1 Rdim=2 Cdim=1  par=lss rng=lss!A1 Rdim=2 Cdim=1 par=evap rng=evap!A1 Rdim=1 Cdim=1 par=RA_par rng=ResElevVol!A1 Rdim=1 Cdim=1  par=Cons rng=Cons!A1 Rdim=1 Cdim=1 par=lng rng=Length!A1 Rdim=1 Cdim=1  par=minstor rng=inactive!A1 Rdim=1  par=maxstor rng=capacity!A1 Rdim=1  par=dReq rng=demandReq!A1 Rdim=1 Cdim=1 par=dCap rng=divCap!A1 Rdim=1 Cdim=1  par=dmin rng=Instream!A1 Rdim=2 Cdim=1  par=cst rng=UnitCost!A1 Rdim=1 par=VegD rng=VegD!A1 Rdim=3 Cdim=1  par=Linkexist rng=Connect!A1 Rdim=1 Cdim=1  par=R_par rng=R_par!A1 Rdim=2 Cdim=1  par=W_par rng=W_par!A1 Rdim=2 Cdim=1  par=sf_par rng=StageFlow!A1 Rdim=2 Cdim=1 par=wf_par rng=WidthFlow!A1 Rdim=2 Cdim=1   par=wsi_par rng=wp!A1 Rdim=2 Cdim=1  par=b rng=Budget!A1 Rdim=0
 
+*Load GDX file and values
 
-
-$GDXIN WASH.gdx
+$GDXIN WASH-Nov11.gdx
 
 $LOAD s
 $LOAD j
 $LOAD wt
 $LOAD dem
 $LOAD v
-
+$LOAD t
 $LOAD envSiteExist
 $LOAD linkexist
+$LOAD Diversion
+$LOAD returnFlow
+$LOAD bankdepth
 
-$LOAD dv
-$LOAD rf
-$LOAD f
-$LOAD n
-$LOAD t
-$LOAD R_par_indx
-$LOAD W_par_indx
-$LOAD sf_par_indx
-$LOAD wf_par_indx
-$LOAD wsi_par_indx
 
 $LOAD wght
 $LOAD theta
@@ -192,8 +191,8 @@ $LOAD fmin
 $LOAD fmax
 $LOAD lss
 $LOAD evap
-$LOAD EleV_par
-$LOAD ar
+$LOAD RA_par
+
 $LOAD cons
 $LOAD lng
 $LOAD minstor
@@ -213,8 +212,6 @@ $LOAD wsi_par
 $LOAD b
 
 
-
-
 $GDXIN
 
 
@@ -225,103 +222,103 @@ $GDXIN
 VARIABLES
          Z               Objective Function value of WASH
 *DER - be a bit more specific in description of objective function
-         Ind(s,i,t)      sub-indicator
+         Ind(s,j,k,t)      sub-indicator
 
          Q(j,k,t)       flow in link at environmental sites [m3 per month]
 
-         D(i,t)          water depth[m]
-         A(i,t)          Channel surface area [m2]
-         WD(i,t)         Channel width [m]
+         D(j,k,t)          water depth[m]
+         A(j,k,t)          Channel surface area [m2]
+         WD(j,k,t)         Channel width [m]
 
-         RV(i,t,n)       Area to re-vegetate [m2]
-         C(i,t,n)        vegetation cover [m2]
+         RV(j,k,t,n)       Area to re-vegetate [m2]
+         C(j,k,t,n)        vegetation cover [m2]
 
 
-         O(i,t)          overbank water level [m]
-         E(i,t)          distance of flood [m]
-         K(i,t,n)        recessiona rate
+         O(j,k,t)          overbank water level [m]
+         E(j,k,t)          distance of flood [m]
+         Rec(j,k,t,n)        recessiona rate
 
          WA(wt,t)        water available to wetlands [ha-m per month]
 
          RR(v,t)         Reservoir Releases [m3 per month]
          STOR(v,t)       Reservoir Storage [m3]
-         ELEV(v)         Reservoir elevation [m]
+         RA(v,t)         Reservoir surface area as a function of storage [m2]
 
-         h(i,t,n)        index of flood distance [0.2-1]
-         m(i,t,n)        index of inundation depth [0.2 - 1]
-         g(i,t,n)        index of stream recession rate [0.2 - 1]
+         h(j,k,t,n)        index of flood distance [0.2-1]
+         m(j,k,t,n)        index of inundation depth [0.2 - 1]
+         g(j,k,t,n)        index of stream recession rate [0.2 - 1]
 
 
          WSI(wt,t)       Wetlands suitability index
-         RSI(i,t,f)      Rivering Suitability Index
-         FCI(i,t,n)      Floodplain Suitability Index
+         RSI(j,k,t,y)      Rivering Suitability Index
+         FCI(j,k,t,n)      Floodplain Suitability Index
 
-         R(i,t)          Riverine habitat sub-indicator
-         F(i,t)          Floodplain connectivity sub-indicator
-         W(i,t)         Wetlands habitat sub-indicator
+         RSImonth(month)  an index of what RSI equation to use [1 or 2 or 3]
+
+         R(j,k,t)          Riverine habitat sub-indicator
+         F(j,k,t)          Floodplain connectivity sub-indicator
+         W(j,k,t)         Wetlands habitat sub-indicator
 
 
 ;
+
+
+*Define upper and lower bounds for the PWP function
+*D(j,k,t).lo = 0;
+*E.lo = 0;
+*O.lo = 0;
+*month.lo = 1; month.up = 12;
 
 *Define equations
 EQUATIONS
          EQ1             Z     Objective function: Watershed Area of Suitable Habitat [m2]
-         EQ1a(i,t)       ind   Summation of the three perfomance indicators [m2]
+         EQ1a(s,j,k,t)       ind   Summation of the three perfomance indicators [m2]
 
-         EQ2(i,t)        R     Riverine Habitat [m2]
-         EQ2a(i,1,f)     RSI   Riversine Suitability Index [0-1] for Jan
-         EQ2b(i,2,f)     RSI for Feb
-         EQ2c(i,3,f)     RSI for Mar
-         EQ2d(i,4,f)     RSI for Apr
-         EQ2e(i,5,f)     RSI for May
-         EQ2f(i,6,f)     RSI for Jun
-         EQ2g(i,7,f)     RSI for Jul
-         EQ2h(i,8,f)     RSI for Aug
-         EQ2i(i,9,f)     RSI for Sep
-         EQ2g(i,10,f)    RSI for Oct
-         EQ2k(i,11,f)    RSI for Nov
-         EQ2l(i,12,f)    RSI for Dec
+         EQ2(j,k,t)        R     Riverine Habitat [m2]
+         EQ2a(j,k,t,y,month)     RSI   Riversine Suitability Index [0-1]
 
-         EQ3(i,t)        F     Floodplain habitat [m2]
-         EQ3a(i,t,n)     FCI   floodplains suiability index [0-1]
-         EQ3b(i,t,n)     h     binary index of flood distance
 
-         EQ4a(i,t)       O     overbank level [m]
-         EQ4(i,t)        E     flood  distance [m]
 
-         EQ5(n)          m     index for floodplain depth [0.2-1]
+         EQ3(j,k,t)        F     Floodplain habitat [m2]
+         EQ3a(j,k,t,n)     FCI   floodplains suiability index [0-1]
+         EQ3b(j,k,t,n)     h     binary index of flood distance
 
-         EQ6(n)          g     index for flood recession [0.2- 1]
-         EQ7(i,t,n)      K     value for g index
-         EQ7a(wt,t)      WSI   wetlands suitability index
+         EQ4a(j,k,t)       O     overbank level [m]
+         EQ4(j,k,t)        E     flood  distance [m]
 
-         EQ8(wt,t)       Impounded Wetlands [m2]
+         EQ5(j,k,t,n)      m     index for floodplain depth [0.2-1]
+
+         EQ6(j,k,t,n)      g     index for flood recession [0.2- 1]
+         EQ7(j,k,t,n)      Rec  recession rate value for g index
+         EQ7a(j,wt,t)      WSI   wetlands suitability index
+
+         EQ8(wt,j,t)       Impounded Wetlands [m2]
 
          EQ9(v,t)        mass balance at reservoirs
-         EQ9a(v,t)       reservoir elevation - storage relationship
-         EQ10(j,k,t)     mass balance at each node
-         EQ11(j,d,t)     mass balance at demand sites
+         EQ9a(v,t)       reservoir area storage relationship
+         EQ10(j,t)     mass balance at each node
+         EQ11(j,dem,t)     mass balance at demand sites
          EQ12(wt,j,t)    mass balance at wetlands sites
 
-         EQ13(i,t)       stage flow relationship
-         EQ14(i,t)       width flow relationship
-         EQ15(i,t)       Channel surface area   [m2]
+         EQ13(j,k,t)       stage flow relationship
+         EQ14(j,k,t)       width flow relationship
+         EQ15(j,k,t)       Channel surface area   [m2]
 
-         EQ16(i,t,n)     Vegetation cover mass balance
+         EQ16(j,k,t,n)     Vegetation cover mass balance
 
          EQ17(v,t)       Reservoir storage cannot go below inactive zone
          EQ17a(v,t)       Reservoir storage cannot exceed storage capacirt
 
-         EQ18(j,d,t)     Diversions to demand sites should meet requirements
-         EQ19(j,d,t)     Diversions to demand sites should not exceed diversion capacity
+         EQ18(j,dem,t)     Diversions to demand sites should meet requirements
+         EQ19(j,k,dem,t)     Diversions to demand sites should not exceed diversion capacity
 
-         EQ20(i,t)       minimum instream flow requirements
-         EQ21(s,i,t)     Limitation on Budget
+         EQ20(j,k,t)       minimum instream flow requirements
+         EQ21(s,y)            Limitation on Budget
 
 ;
 
 
-EQ1..                     Z =e= sum((s,i,t), wght(s,i,t) * Ind(s,i,t))            ;
+EQ1..                     Z =e= sum((s,j,k,t), wght(s,j,k,t) * Ind(s,j,k,t))            ;
 *EQ1a(i,t)..               Ind(s,i,t) =e= sum((i,t), R(i,t), F(i,t), W(wt,t))            OLD EQUATION ;
 *DER - EQ1a will give several errors. The index s is not controlled (only appears on the left-
 * hand side. R and F are for links but W is for a node (wetland units).
@@ -329,77 +326,68 @@ EQ1..                     Z =e= sum((s,i,t), wght(s,i,t) * Ind(s,i,t))          
 * first element of the set, F(i,t) equal to the second, etc... I think it will also be easier
 * to change the logic so wetland units are defined as links not a node. In that case:
 
-EQ1a(s,i,t)             Ind(s,i,t) =e= R(i,t)$(ord(s) eq 1) + F(i,t)$(ord(s) eq 2) +  W(i,t)$(ord(s) eq 3);
+EQ1a(s,j,k,t)..             Ind(s,j,k,t) =e= R(j,k,t)$(ord(s) eq 1) + F(j,k,t)$(ord(s) eq 2) +  W(j,k,t)$(ord(s) eq 3);
 
-EQ2(i,t)..                R(i,t)  =e=  prod((f), RSI(i,t,f) * A(i,t))                       ;
+EQ2(j,k,t)..                R(j,k,t)  =e=  prod((y), RSI(j,k,t,y) * A(j,k,t))                 ;
 *EQ2a(i,t,f)..             RSI(i,t,f) =e= R_par(f,t,R_par_indx) * D(i,t)           OLD EQUATION;
 
-EQ2a(i,1,f)..             RSI(i,1,f) =e= PWP(1,D(i,1));
-EQ2b(i,2,f)..             RSI(i,2,f) =e= PWP(1,D(i,2));
-EQ2c(i,3,f)..             RSI(i,3,f) =e= PWP(2,D(i,3));
-EQ2d(i,4,f)..             RSI(i,4,f) =e= PWP(2,D(i,4));
-EQ2e(i,5,f)..             RSI(i,5,f) =e= PWP(2,D(i,5));
-EQ2f(i,6,f)..             RSI(i,6,f) =e= PWP(2,D(i,6));
-EQ2g(i,7,f)..             RSI(i,7,f) =e= PWP(2,D(i,7));
-EQ2h(i,8,f)..             RSI(i,8,f) =e= PWP(2,D(i,8));
-EQ2i(i,9,f)..             RSI(i,9,f) =e= PWP(3,D(i,9));
-EQ2j(i,10,f)..            RSI(i,10,f) =e= PWP(3,D(i,10));
-EQ2k(i,11,f)..            RSI(i,11,f) =e= PWP(3,D(i,11));
-EQ2l(i,12,f)..            RSI(i,12,f) =e= PWP(3,D(i,12));
+
+EQ2a(j,k,t,y,month)..             RSI(j,k,t,y) =e= PWP(RSIequationNum(month),D(j,k,t));
 
 
-EQ3(i,t)..                F(i,t) =e= sum((n),FCI(i,t,n) * C(i,t,n))               ;
-EQ3a(i,t,n)..             FCI(i,t,n) =e=  h(i,t,n) * m(i,t,n) * g(i,t,n)          ;
+
+EQ3(j,k,t)..                F(j,k,t) =e= sum((n),FCI(j,k,t,n) * C(j,k,t,n))               ;
+EQ3a(j,k,t,n)..             FCI(j,k,t,n) =e=  h(j,k,t,n) * m(j,k,t,n) * g(j,k,t,n)          ;
 *EQ3b(i,t,n)..             h(i,t,n) =e= 0.2$(E(i,t) gt vegD(i,t))                 OLD EQUATION ;
-EQ3b(i,t,n)..             h(i,t,n) =e=  PWP(4,E(i,t,n));
+EQ3b(j,k,t,n)..             h(j,k,t,n) =e=  PWP(4,E(j,k,t));
 
 
 
-EQ4(i,t)..                E(i,t) = O(i,t)/theta(i,t)                              ;
-EQ4a(i,t)..               O(i,t) = D(i,t) - bankdepth(i,t)                        ;
+EQ4(j,k,t)..             E(j,k,t)=e= O(j,k,t)/theta(j,k)                              ;
+EQ4a(j,k,t)..            O(j,k,t) =e= D(j,k,t) - bankdepth(j,k,t)                        ;
 
-EQ5(n)..                  m(i,t,n) =e= PWP(5,O(i,t,n))                            ;
+EQ5(j,k,t,n)..            m(j,k,t,n) =e= PWP(5,O(j,k,t))                            ;
 
-EQ6(n)..                  g(i,t,n)=e= 0.94* ( exp(-0.5*(ln(K(i,t,n)/1.28))/0.99)**2)   ;
+EQ6(j,k,t,n)..           g(j,k,t,n)=e= 0.94* (exp(-0.5*(log(Rec(j,k,t,n)/1.28))/0.99)**2)   ;
 
-EQ7(i,t,n)..
-                         K(i,t,n) = Abs(100*(ln(D(t) - ln(D(t))))/30)                 ;
+EQ7(j,k,t,n)..
+                         Rec(j,k,t,n) =e= Abs(100*(log(D(j,k,t) - log(D(j,k,t))))/30)                 ;
 
-EQ8(wt,t)..               W(wt,t) =e= WSI(wt,t) * aw(wt,t)                        ;
-EQ8a(wt,t)..              WST(wt,t) =e=  wsi_par(w,t,wsi_par_indx) * Q(wt,t)        ;
+EQ8(wt,j,t)..               W(j,wt,t) =e= WSI(wt,t) * aw(wt,t)                        ;
+EQ7a(j,wt,t)..              WSI(wt,t) =e=  wsi_par(wt,t,"wsi_par1") * Q(j,wt,t) +wsi_par(wt,t,"wsi_par2")         ;
 
-EQ9(v,t)..                STOR(v,t) =e= STOR(v,t-1)+sum (j, Q(j,v,t)*(1-lss(j,v,t))) - RR(v,t) - (evap(v,t)*ar(v,t)) ;
+EQ9(v,t)..                STOR(v,t) =e= STOR(v,t-1)+sum (j, Q(j,v,t)*(1-lss(j,v,t))) - RR(v,t) - (evap(v,t)*RA(v,t)) ;
 * modify the equation to specify the initial storage.
 
-EQ9a(v,t)..               ELEV(v,t) =e= EleV_par1*sqrt(STOR(v,t)) + EleV_par2 * STOR(v,t) + EleV_par3            ;
+EQ9a(v,t)..               RA(v,t) =e= RA_par(v, "RA_par1")*STOR(v,t) + RA_par(v, "RA_par2")        ;
 
-EQ10(j,k,t)..             sum(k, Q(j,k,t) * (1-lss(j,k,t))) =g= sum (k, Q(j,k,t))  ;
+EQ10(j,t)..             sum(k, (Q(j,k,t) * (1-lss(j,k,t)))) =g= sum (k, Q(j,k,t))  ;
 
-EQ11(j,d,t)..             sum (j, Q(j,d,t) * (1-lss(j,d,t)) -sum (j,Q(j,k,t) * (1 - Cons(d,t))) =g=  sum(j, Q(d,j,t))   ;
-EQ12(wt,j,t)..            WA(wt,t) =l= sum (j,Q(j,wt,t) * (1-lss(j,w,t)))        ;
+EQ11(j,dem,t)..          sum (k, Q(j,dem,t) * (1-lss(j,dem,t))) - sum (k,Q(j,k,t) * (1 - Cons(dem,t))) =g=  sum(k, Q(dem,k,t))   ;
+EQ12(wt,j,t)..            WA(wt,t) =l= sum (k,Q(k,wt,t) * (1-lss(j,wt,t)))        ;
 
-EQ13(i,t)..               D(i,t)=e= sf_par(i,sf_par_indx)*Q(i,t)                           ;
-EQ14(i,t)..               WD(i,t) =e= wf_par(i,wf_par_indx)*Q(i,t)                       ;
-EQ15(i,t)..               A(i,t)=e= WD(i,t)* lng(i)                               ;
+EQ13(j,k,t)..               D(j,k,t)=e= sf_par(j,k,"sf_par1")*Q(j,k,t) + sf_par(j,k,"sf_par2")                           ;
+EQ14(j,k,t)..               WD(j,k,t) =e= wf_par(j,k,"wf_par1")*Q(j,k,t) +wf_par(j,k,"wf_par2")                      ;
+EQ15(j,k,t)..               A(j,k,t)=e= WD(j,k,t)* lng(j,k)                               ;
 
-EQ16(i,t,n)..             C(i,t,n) =e= C(i,t,n) + RV(i,t,n)                      ;
+EQ16(j,k,t,n)..             C(j,k,t,n) =e= C(j,k,t,n) + RV(j,k,t,n)                      ;
 
 EQ17(v,t)..               STOR(v,t) =g= minstor(v)                    ;
 EQ17a(v,t)..              STOR(v,t) =l= maxstor(v)                     ;
 
-EQ18(j,d,t)..             sum(j, Q(j,d,t) * lss(j,d,t)) =g= dReq(d,t)            ;
-EQ19(j,d,t)..             Q(j,d,t)$linkexist(j,k) =l= dcap(j,d,t)                               ;
+EQ18(j,dem,t)..             sum(k,Q(k,dem,t) * lss(k,dem,t)) =g= dReq(dem,t)            ;
+EQ19(j,k,dem,t)..           Q(j,dem,t)$linkexist(j,k) =l= dcap(j,dem)                               ;
 
-EQ20(i,t)                 Q(i,t) =l= dmin(i,t)                                   ;
+EQ20(j,k,t)..               Q(j,k,t) =l= dmin(j,k,t)                                   ;
 
-EQ21(s,i,t)..             sum((i,t,n), cst(f) * RV(i,t,n)) =l= b                ;
+EQ21(s,y)..                  sum((j,k,t,n), cst(y) * RV(j,k,t,n)) =l= b                ;
 
 
 
 
 Model WASH /all/;
 
-Solve WASH using maximizing Z using DNLP;
+Solve WASH maximizing Z using DNLP;
 
 Display Z.l, Z.m;
 
