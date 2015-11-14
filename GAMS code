@@ -154,7 +154,7 @@ Table  pwpdata(*,*,*) '1st index: function number, 2nd index: segment number, 3r
 
 
 * Write pwp data to gdx file read by external library
-$gdxout pwp-Nov11.gdx
+$gdxout pwp-Nov14.gdx
 $unload pwpdata
 $gdxout
 
@@ -165,11 +165,11 @@ Function pwp /pwplib.pwpfunc/;
 
 * Read sets and parameter input values from Excel
 
-$CALL GDXXRW.EXE input=WASH-SampleData.xlsx output=WASH-Nov11.gdx Set=s rng=SubInd!A1:A100 Rdim=1 Set=j rng=Nodes!A1:A100 Rdim=1 Set=wt rng=Wetlands!A1:A100 Rdim=1 Set=dem rng=Demand!A1:A100 Rdim=1 Set=v rng=Reservoirs!A1:A100 Rdim=1 par=envSiteExist rng=EnvSite!A1 Rdim=1 Cdim=1  par=Diversion rng=Diversions!A1 Rdim=1 Cdim=1   par=returnFlow rng=ReturnFlow!A1 Rdim=1 Cdim=1 Set=f rng=FishSpp!A1:A10 Rdim=1 Set=n rng=VegSpp!A1:A10 Rdim=1 Set=t rng=Month!A1:A100 Rdim=1   par=bankdepth  rng=Bankfull!A1 Rdim= 2  Cdim=1  par=wght rng=weights!A1 Rdim=3 Cdim=1 par=theta rng=theta!A1 Rdim=1 Cdim=1  par=aw rng=AW!A1 Rdim=2 par=fmin rng=Fmin!A1 Rdim=2 Cdim=1  par=fmax rng=Fmax!A1 Rdim=2 Cdim=1  par=lss rng=lss!A1 Rdim=2 Cdim=1 par=evap rng=evap!A1 Rdim=1 Cdim=1 par=RA_par rng=ResElevVol!A1 Rdim=1 Cdim=1  par=Cons rng=Cons!A1 Rdim=1 Cdim=1 par=lng rng=Length!A1 Rdim=1 Cdim=1  par=minstor rng=inactive!A1 Rdim=1  par=maxstor rng=capacity!A1 Rdim=1  par=dReq rng=demandReq!A1 Rdim=1 Cdim=1 par=dCap rng=divCap!A1 Rdim=1 Cdim=1  par=dmin rng=Instream!A1 Rdim=2 Cdim=1  par=cst rng=UnitCost!A1 Rdim=1 par=VegD rng=VegD!A1 Rdim=3 Cdim=1  par=Linkexist rng=Connect!A1 Rdim=1 Cdim=1  par=R_par rng=R_par!A1 Rdim=2 Cdim=1  par=W_par rng=W_par!A1 Rdim=2 Cdim=1  par=sf_par rng=StageFlow!A1 Rdim=2 Cdim=1 par=wf_par rng=WidthFlow!A1 Rdim=2 Cdim=1   par=wsi_par rng=wp!A1 Rdim=2 Cdim=1  par=b rng=Budget!A1 Rdim=0
+$CALL GDXXRW.EXE input=WASH-SampleData.xlsx output=WASH-Nov14.gdx Set=s rng=SubInd!A1:A100 Rdim=1 Set=j rng=Nodes!A1:A100 Rdim=1 Set=wt rng=Wetlands!A1:A100 Rdim=1 Set=dem rng=Demand!A1:A100 Rdim=1 Set=v rng=Reservoirs!A1:A100 Rdim=1 par=envSiteExist rng=EnvSite!A1 Rdim=1 Cdim=1  par=Diversion rng=Diversions!A1 Rdim=1 Cdim=1   par=returnFlow rng=ReturnFlow!A1 Rdim=1 Cdim=1 Set=f rng=FishSpp!A1:A10 Rdim=1 Set=n rng=VegSpp!A1:A10 Rdim=1 Set=t rng=Month!A1:A100 Rdim=1   par=bankdepth  rng=Bankfull!A1 Rdim= 2  Cdim=1  par=wght rng=weights!A1 Rdim=3 Cdim=1 par=theta rng=theta!A1 Rdim=1 Cdim=1  par=aw rng=AW!A1 Rdim=2 par=fmin rng=Fmin!A1 Rdim=2 Cdim=1  par=fmax rng=Fmax!A1 Rdim=2 Cdim=1  par=lss rng=lss!A1 Rdim=2 Cdim=1 par=evap rng=evap!A1 Rdim=1 Cdim=1 par=RA_par rng=ResElevVol!A1 Rdim=1 Cdim=1  par=Cons rng=Cons!A1 Rdim=1 Cdim=1 par=lng rng=Length!A1 Rdim=1 Cdim=1  par=minstor rng=inactive!A1 Rdim=1  par=maxstor rng=capacity!A1 Rdim=1  par=dReq rng=demandReq!A1 Rdim=1 Cdim=1 par=dCap rng=divCap!A1 Rdim=1 Cdim=1  par=dmin rng=Instream!A1 Rdim=2 Cdim=1  par=cst rng=UnitCost!A1 Rdim=1 par=VegD rng=VegD!A1 Rdim=3 Cdim=1  par=Linkexist rng=Connect!A1 Rdim=1 Cdim=1  par=R_par rng=R_par!A1 Rdim=2 Cdim=1  par=W_par rng=W_par!A1 Rdim=2 Cdim=1  par=sf_par rng=StageFlow!A1 Rdim=2 Cdim=1 par=wf_par rng=WidthFlow!A1 Rdim=2 Cdim=1   par=wsi_par rng=wp!A1 Rdim=2 Cdim=1  par=b rng=Budget!A1 Rdim=0
 
 *Load GDX file and values
 
-$GDXIN WASH-Nov11.gdx
+$GDXIN WASH-Nov14.gdx
 
 $LOAD s
 $LOAD j
