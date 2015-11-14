@@ -375,7 +375,7 @@ EQ16(j,k,t,n)..             C(j,k,t,n) =e= C(j,k,t,n) + RV(j,k,t,n)             
 EQ17(v,t)..               STOR(v,t) =g= minstor(v)                    ;
 EQ17a(v,t)..              STOR(v,t) =l= maxstor(v)                     ;
 
-EQ18(j,dem,t)..             sum(k,Q(k,dem,t) * lss(k,dem,t)) =g= dReq(dem,t)            ;
+EQ18(j,dem,t)..             sum(k,Q(k,dem,t)$Diversion(j,k) * lss(k,dem,t)) =g= dReq(dem,t)            ;
 EQ19(j,k,dem,t)..           Q(j,dem,t)$linkexist(j,k) =l= dcap(j,dem)                               ;
 
 EQ20(j,k,t)..               Q(j,k,t) =l= dmin(j,k,t)                                   ;
