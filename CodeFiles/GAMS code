@@ -163,13 +163,13 @@ PARAMETERS
 
 
          qmin(j,k,t)            Defines the physical and natural lower bounds of flow on links [Mm^3 per month] as defined by the channel geometry and historical records
-         qmax(j,k,t)            Defines the physical and natural upper bounds of flow on links [Mm^3 per month] as defined by the channel geometry and historical records
+         qmax(j,k,t)            Defines the physical and natural upper bounds of flow on links [Mm^3 per month] based on headflow received and reservoir capacity upstream of every link
          Qsim(j,k,t)            Flow values for simulation purposes [Mm^3 per month]
-         CMax(j,k,t,n)          Maximum vegetation cover allowed based on site floodplain area and revegetation potentials
+         CMax(j,k,t,n)          Maximum vegetation cover allowed based on site floodplain area and revegetation potentials [Mm2 per month]
          SimLink(j,k)           Defines the links where flow is fixed for the simulation case
          LinkExistSim(j,k)      Defines all other links where flow is not fixed for the simulation case
 
-         DValue(run)            Define parameters to run the model over
+         DValue(run)            Define parameters to run the model over multiple values of demand requirements to build a tradeoff curve
 
          QLoop(Qrun)            Define flow values for the flow sensivity analysis loop
 
