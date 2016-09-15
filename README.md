@@ -22,6 +22,16 @@ WASH maximizes available and ecologically suitable area for species of concern b
 
 **Figure 1**. A flow diagram of the WASH systems model components that shows the decision and state variables, model parameters, suitability indexes, performance indicators, objective function and constraints 
 
+##Instructions to Run WASH Model:
+1. You will need to download and install [GAMS] (https://www.gams.com/) and [MS Excel] (https://products.office.com/en-us/excel) on your machine to run the WASH tool. 
+2. Download the following files from the GitHub repository: [GAMS Code file] (https://github.com/ayman510/WASH/blob/master/CodeFiles/GAMS%20code), [Input Data File] (https://github.com/ayman510/WASH/blob/master/InputData/InputData.xlsx), [Output Data Files] (https://github.com/ayman510/WASH/tree/master/OutputFiles)
+3. Define the input data by editing the Input Data Excel Spreadsheet. Refer to the first sheet of the Excel file for a detailed description of the accepted data values and units
+4. Place all the downloaded files (Excel Spreadsheets, GDX files and GAMS code file) in the same folder directory
+4. If applicable, change the name of the input data file in the code line: "$CALL GDXXRW.EXE input=InputData.xlsx" to your input data filename
+5. Run the code using the Run botton or File -> Run. The code runs successfully if you get the message "*** Normal Completion ***" in the generated listing file
+6. The model results and outputs can be read from the listing file. GAMS will also write the results to a GAMS Exchange file (GDX) "AllNetworkResults.gdx" that can be passed to other software for further processing (e.g. R, Matlab, Excel, etc.)
+6. Here, the results are also written to an Excel file "AllNetworkResults_Analysis.xlsx" that will display the results in US.Customary Units and will graph the results.
+
 
 
 
