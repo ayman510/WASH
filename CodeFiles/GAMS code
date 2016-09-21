@@ -481,8 +481,8 @@ Display WASH.ModelStat, Z.L, WSI.L, W.L, FCI.L, F.L, RSI.L, R.L, Ind.L, D.l , Q.
 *=======================================================================
 * Solve the model and unload results to excel
 *=======================================================================
-*Execute_Unload "AllNetworkResults_Analysis_08242016.gdx", Z,Q,WSI,W,FCI,F,RSI,R, RR,STOR, FlowMarginal   ;
-*Execute 'GDXXRW.EXE AllNetworkResults_Analysis_08242016.gdx var=Z  rng=Z!A1    var=WSI  rng=WSI!A1  var=W rng=W!A1 var=FCI rng=FCI!A1 var=F rng=F!A1   var=RSI rng=RSI!A1  var=R  rng=R!A1   var=Q rng=Q!A1   var=RR rng=RR!A1  var=STOR rng=STOR!A1  par=FlowMarginal rng=FlowMarginal!A1       '             ;
+*Execute_Unload "AllNetworkResults_Analysis.gdx", Z,Q,WSI,W,FCI,F,RSI,R, RR,STOR, FlowMarginal   ;
+*Execute 'GDXXRW.EXE AllNetworkResults_Analysis.gdx var=Z  rng=Z!A1    var=WSI  rng=WSI!A1  var=W rng=W!A1 var=FCI rng=FCI!A1 var=F rng=F!A1   var=RSI rng=RSI!A1  var=R  rng=R!A1   var=Q rng=Q!A1   var=RR rng=RR!A1  var=STOR rng=STOR!A1  par=FlowMarginal rng=FlowMarginal!A1       '             ;
 
 
 *===============================================================================================
