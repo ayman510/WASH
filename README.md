@@ -23,9 +23,9 @@ WASH maximizes available and ecologically suitable area for species of concern b
 **Figure 1**. A flow diagram of the WASH systems model components that shows the decision and state variables, model parameters, suitability indexes, performance indicators, objective function and constraints 
 
 ##Instructions to Run WASH Model:
-1. You will need to download and install [GAMS] (https://www.gams.com/) and [MS Excel] (https://products.office.com/en-us/excel) on your machine to run the WASH tool. 
+1. Download and install [GAMS] (https://www.gams.com/) and [MS Excel] (https://products.office.com/en-us/excel) on your machine to run the WASH tool
 2. Download the following files from the GitHub repository: [GAMS Code file] (https://github.com/ayman510/WASH/blob/master/CodeFiles/GAMS%20code), [Input Data File] (https://github.com/ayman510/WASH/blob/master/InputData/InputData.xlsx), [Output Data Files] (https://github.com/ayman510/WASH/tree/master/OutputFiles)
-3. Define the input data by editing the Input Data Excel Spreadsheet. Refer to the first sheet of the Excel file for a detailed description of the accepted data values and units
+3. To edit the input data, open the Input Data Excel Spreadsheet using MS Excel. Refer to the first sheet of the Excel file for a detailed description of the accepted data values and units
 4. Place all the downloaded files (Excel Spreadsheets, GDX files and GAMS code file) in the same folder directory
 4. If applicable, change the name of the input data file in the code line: "$CALL GDXXRW.EXE input=InputData.xlsx" to your input data filename
 5. Run the code using the Run botton or File -> Run. The code runs successfully if you get the message "*** Normal Completion ***" in the generated listing file
