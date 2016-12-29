@@ -1,6 +1,11 @@
 # Introduction
 WASH model results are visually presented on an open-source GIS web app that reads the WASH optimization model results and displays them on a series of interactive maps. The purpose of using this web mapping app is to visualize results in spatial and temporal scales, communicate model findings to stakeholders and make the model input data and results accessible. 
 
+## Creating a webmap
+The following chart explains how the optimization model results were published into a web map
+
+
+
 ## To Access the map:
 All you need is a web browser and internet connection. Click on this website (or type to your browser): www.WASHmap.usu.edu
 
