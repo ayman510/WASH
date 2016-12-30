@@ -9,7 +9,7 @@ Dept. of Civil & Env. Engineering and Utah Water Research Lab
 Utah State University
 ayman.alafifi@gmail.com
 
-Last Updated: Sep.15, 2016
+Last Updated: Dec.23, 2016
 ####################
 
 Introduction:
@@ -169,6 +169,8 @@ PARAMETERS
          SimLink(j,k)           Defines the links where flow is fixed for the simulation case
          LinkExistSim(j,k)      Defines all other links where flow is not fixed for the simulation case
 
+         g(j,k,t,n)             The natural growth area [Mm2 per month] of species n
+
          DValue(run)            Define parameters to run the model over multiple values of demand requirements to build a tradeoff curve
 
          QLoop(Qrun)            Define flow values for the flow sensivity analysis loop
@@ -194,16 +196,13 @@ SCALARS
 *--------------------------------------------------------------------------------------------------------------------------------------------
 
 
-***Full network model with 3 Environmental Sites  (where field data are collected)
+***Full network model with 3 test Environmental Sites 
 *$CALL GDXXRW.EXE input=WASH-Data-Apr2016.xlsx output=WASH-Data.gdx  Set=t rng=Month!A1:A12 Rdim=1  Set=s rng=SubInd!A1:A100 Rdim=1 set=y rng=FishSpp!A1:A10 Rdim=1 set=n rng=VegSpp!A1:A10 Rdim=1 Set=j rng=Nodes!A1:A100 Rdim=1 Set=wt rng=Wetlands!A1:A100 Rdim=1 Set=dem rng=Demand!A1:A100 Rdim=1  set=NodeNotDemandSite  rng=NodesNotDemand!A1:A100 Rdim=1 set=NodeNotHeadwater  rng=NodeNotHeadwater!A1:A100 Rdim=1  Set=v rng=Reservoirs!A1:A100 Rdim=1 Set=rsi_indx rng=rsiIndex!A1:A10 Rdim=1  Set=fci_indx rng=fciIndex!A1:A10 Rdim=1 par=LinkID  rng=LinkName!A1 Rdim=2   par=rsi_par rng=rsiEQ!A1 Rdim=1 Cdim=1  par=fci_par rng=fciEQ!A1 Rdim=1 Cdim=1 par=envSiteExist rng=EnvSite!A1 Rdim=1 Cdim=1  par=DiversionExist rng=Diversions!A1 Rdim=1 Cdim=1   par=returnFlowExist rng=ReturnFlow!A1 Rdim=1 Cdim=1 par=WetlandsExist rng=WetlandsSites!A1 Rdim=1 Cdim=1 par=LinktoReservoir rng=LinktoReservoir!A1 Rdim=1 Cdim=1 par=LinkOutReservoir rng=LinkOutReservoir!A1 Rdim=1 Cdim=1   Set=RA_par_indx rng=R_indx!A1 Rdim=1  Set=sf_par_indx rng=sf_indx!A1:A10 Rdim=1  Set=wf_par_indx rng=wf_indx!A1:A10 Rdim=1 Set=wsi_par_indx rng=wsi_indx!A1:A10 Rdim=1 par=reachGain rng=HeadFlow!A1 Rdim=1 Cdim=1   par=wght rng=weights!A1 Cdim=1 Rdim=3  par=aw rng=AW!A1 Rdim=3  par=lss rng=lss!A1 Rdim=2 Cdim=1 par=evap rng=evap!A1 Rdim=1 Cdim=1 par=RA_par rng=ResElevVol!A1 Rdim=1 Cdim=1  par=Qsim  rng=QSim!A1 Rdim=2 Cdim=1   par=Qmin  rng=Qmin!A1 Rdim=2 Cdim=1  par=Qmax  rng=Qmax!A1 Rdim=2 Cdim=1  par=Cons rng=Cons!A1 Rdim=1 Cdim=1 par=lng rng=Length!A1 Rdim=2   par=minstor rng=inactive!A1 Rdim=1  par=maxstor rng=capacity!A1 Rdim=1  par=dReqBase rng=demandReq!A1 Rdim=1 Cdim=1 par=dCap rng=divCap!A1 Rdim=2  par=instreamReq   rng=Instream!A1 Rdim=2 Cdim=1  par=cst rng=UnitCost!A1 Rdim=1  par=Linkexist rng=Connect!A1 Rdim=1 Cdim=1  par=sf_par rng=StageFlow!A1 Rdim=2 Cdim=1 par=wf_par rng=WidthFlow!A1 Rdim=2 Cdim=1   par=wsi_par rng=wp!A1 Rdim=3 Cdim=1  par=b rng=Budget!A1 Rdim=0  par=rv rng=Revegetate!A1 Rdim=3 Cdim=1  par=InitSTOR rng=InStor!A1 Rdim=1   par=InitD rng=InitD!A1 Rdim=2  par=InitC rng=InitC!A1 Rdim=2  par=CMax   rng=MaxVegCover!A1 Rdim=3  Cdim=1 par=SimLink  rng=SimLinks!A1 Rdim=2  par=LinkExistSim   rng=Connect_sim!A1 Cdim=1  Rdim=1  set= MassBalanceNodes rng=MassBalanceNodes!A1  Rdim=1  Set=run  rng=Runs!A1 Rdim=1   par=DValue  rng=DemandRuns!A1  Rdim=1
 
 
-***Full network model with 19 Environmental Sites
-$CALL GDXXRW.EXE input=InputData.xlsx output=WASH-Data.gdx  Set=t rng=Month!A1:A12 Rdim=1  Set=s rng=SubInd!A1:A100 Rdim=1 set=y rng=FishSpp!A1:A10 Rdim=1 set=n rng=VegSpp!A1:A10 Rdim=1 Set=j rng=Nodes!A1:A100 Rdim=1 Set=wt rng=Wetlands!A1:A100 Rdim=1 Set=dem rng=Demand!A1:A100 Rdim=1  set=NodeNotDemandSite  rng=NodesNotDemand!A1:A100 Rdim=1 set=NodeNotHeadwater  rng=NodeNotHeadwater!A1:A100 Rdim=1  Set=v rng=Reservoirs!A1:A100 Rdim=1 Set=rsi_indx rng=rsiIndex!A1:A10 Rdim=1  Set=fci_indx rng=fciIndex!A1:A10 Rdim=1 par=LinkID  rng=LinkName!A1 Rdim=2   par=rsi_par rng=rsiEQ!A1 Rdim=3 Cdim=1  par=fci_par rng=fciEQ!A1 Rdim=3 Cdim=1 par=envSiteExist rng=EnvSite!A1 Rdim=1 Cdim=1  par=DiversionExist rng=Diversions!A1 Rdim=1 Cdim=1   par=returnFlowExist rng=ReturnFlow!A1 Rdim=1 Cdim=1 par=WetlandsExist rng=WetlandsSites!A1 Rdim=1 Cdim=1 par=LinktoReservoir rng=LinktoReservoir!A1 Rdim=1 Cdim=1 par=LinkOutReservoir rng=LinkOutReservoir!A1 Rdim=1 Cdim=1   Set=RA_par_indx rng=R_indx!A1 Rdim=1  Set=sf_par_indx rng=sf_indx!A1:A10 Rdim=1  Set=wf_par_indx rng=wf_indx!A1:A10 Rdim=1 Set=wsi_par_indx rng=wsi_indx!A1:A10 Rdim=1 par=reachGain rng=HeadFlow!A1 Rdim=1 Cdim=1   par=wght rng=weights!A1 Cdim=1 Rdim=3  par=aw rng=AW!A1 Rdim=3  par=lss rng=lss!A1 Rdim=2 Cdim=1 par=evap rng=evap!A1 Rdim=1 Cdim=1  par=linkEvap  rng=linkEvap!A1  Rdim=2  Cdim=1  par=RA_par rng=ResElevVol!A1 Rdim=1 Cdim=1  par=Qsim  rng=QSim!A1 Rdim=2 Cdim=1   par=Qmin  rng=Qmin!A1 Rdim=2 Cdim=1  par=Qmax  rng=Qmax!A1 Rdim=2 Cdim=1  par=Cons rng=Cons!A1 Rdim=1 Cdim=1 par=lng rng=Length!A1 Rdim=2   par=minstor rng=inactive!A1 Rdim=1  par=maxstor rng=capacity!A1 Rdim=1  par=dReqBase rng=demandReq!A1 Rdim=1 Cdim=1 par=dCap rng=divCap!A1 Rdim=2  par=instreamReq   rng=Instream!A1 Rdim=2 Cdim=1  par=cst rng=UnitCost!A1 Rdim=1  par=Linkexist rng=Connect!A1 Rdim=1 Cdim=1  par=sf_par rng=StageFlow!A1 Rdim=2 Cdim=1 par=wf_par rng=WidthFlow!A1 Rdim=2 Cdim=1   par=wsi_par rng=wp!A1 Rdim=3 Cdim=1  par=b rng=Budget!A1 Rdim=0  par=rv rng=Revegetate!A1 Rdim=3 Cdim=1  par=InitSTOR rng=InStor!A1 Rdim=1   par=InitD rng=InitD!A1 Rdim=2  par=InitC rng=InitC!A1 Rdim=2  par=CMax   rng=MaxVegCover!A1 Rdim=3  Cdim=1 par=SimLink  rng=SimLinks!A1 Rdim=2  par=LinkExistSim   rng=Connect_sim!A1 Cdim=1  Rdim=1  set= MassBalanceNodes rng=MassBalanceNodes!A1  Rdim=1  Set=run  rng=Runs!A1 Rdim=1   par=DValue  rng=DemandRuns!A1  Rdim=1    set=Qrun  rng=Qrun!A1  Rdim=1   par=QLoop   rng=QRunValues!A1  Rdim=1
+***Full network model 
 
-
-*For WASH Sensitivity Analysis
-*$CALL GDXXRW.EXE input=SensitivityInput_Confluence_08312016.xlsx output=WASH-Data.gdx  Set=t rng=Month!A1:A12 Rdim=1  Set=s rng=SubInd!A1:A100 Rdim=1 set=y rng=FishSpp!A1:A10 Rdim=1 set=n rng=VegSpp!A1:A10 Rdim=1 Set=j rng=Nodes!A1:A100 Rdim=1 Set=wt rng=Wetlands!A1:A100 Rdim=1 Set=dem rng=Demand!A1:A100 Rdim=1  set=NodeNotDemandSite  rng=NodesNotDemand!A1:A100 Rdim=1 set=NodeNotHeadwater  rng=NodeNotHeadwater!A1:A100 Rdim=1  Set=v rng=Reservoirs!A1:A100 Rdim=1 Set=rsi_indx rng=rsiIndex!A1:A10 Rdim=1  Set=fci_indx rng=fciIndex!A1:A10 Rdim=1 par=LinkID  rng=LinkName!A1 Rdim=2   par=rsi_par rng=rsiEQ!A1 Rdim=3 Cdim=1  par=fci_par rng=fciEQ!A1 Rdim=3 Cdim=1 par=envSiteExist rng=EnvSite!A1 Rdim=1 Cdim=1  par=DiversionExist rng=Diversions!A1 Rdim=1 Cdim=1   par=returnFlowExist rng=ReturnFlow!A1 Rdim=1 Cdim=1 par=WetlandsExist rng=WetlandsSites!A1 Rdim=1 Cdim=1 par=LinktoReservoir rng=LinktoReservoir!A1 Rdim=1 Cdim=1 par=LinkOutReservoir rng=LinkOutReservoir!A1 Rdim=1 Cdim=1   Set=RA_par_indx rng=R_indx!A1 Rdim=1  Set=sf_par_indx rng=sf_indx!A1:A10 Rdim=1  Set=wf_par_indx rng=wf_indx!A1:A10 Rdim=1 Set=wsi_par_indx rng=wsi_indx!A1:A10 Rdim=1 par=reachGain rng=HeadFlow!A1 Rdim=1 Cdim=1   par=wght rng=weights!A1 Cdim=1 Rdim=3  par=aw rng=AW!A1 Rdim=3  par=lss rng=lss!A1 Rdim=2 Cdim=1 par=evap rng=evap!A1 Rdim=1 Cdim=1  par=linkEvap  rng=linkEvap!A1  Rdim=2  Cdim=1  par=RA_par rng=ResElevVol!A1 Rdim=1 Cdim=1  par=Qsim  rng=QSim!A1 Rdim=2 Cdim=1   par=Qmin  rng=Qmin!A1 Rdim=2 Cdim=1  par=Qmax  rng=Qmax!A1 Rdim=2 Cdim=1  par=Cons rng=Cons!A1 Rdim=1 Cdim=1 par=lng rng=Length!A1 Rdim=2   par=minstor rng=inactive!A1 Rdim=1  par=maxstor rng=capacity!A1 Rdim=1  par=dReqBase rng=demandReq!A1 Rdim=1 Cdim=1 par=dCap rng=divCap!A1 Rdim=2  par=instreamReq   rng=Instream!A1 Rdim=2 Cdim=1  par=cst rng=UnitCost!A1 Rdim=1  par=Linkexist rng=Connect!A1 Rdim=1 Cdim=1  par=sf_par rng=StageFlow!A1 Rdim=2 Cdim=1 par=wf_par rng=WidthFlow!A1 Rdim=2 Cdim=1   par=wsi_par rng=wp!A1 Rdim=3 Cdim=1  par=b rng=Budget!A1 Rdim=0  par=rv rng=Revegetate!A1 Rdim=3 Cdim=1  par=InitSTOR rng=InStor!A1 Rdim=1   par=InitD rng=InitD!A1 Rdim=2  par=InitC rng=InitC!A1 Rdim=2  par=CMax   rng=MaxVegCover!A1 Rdim=3  Cdim=1 par=SimLink  rng=SimLinks!A1 Rdim=2  par=LinkExistSim   rng=Connect_sim!A1 Cdim=1  Rdim=1  set= MassBalanceNodes rng=MassBalanceNodes!A1  Rdim=1  Set=run  rng=Runs!A1 Rdim=1   par=DValue  rng=DemandRuns!A1  Rdim=1  set=Qrun  rng=Qrun!A1  Rdim=1   par=QLoop   rng=QRunValues!A1  Rdim=1
+$CALL GDXXRW.EXE input=WASH_InputData.xlsx output=WASH-Data.gdx  Set=t rng=Month!A1:A12 Rdim=1  Set=s rng=SubInd!A1:A100 Rdim=1 set=y rng=FishSpp!A1:A10 Rdim=1 set=n rng=VegSpp!A1:A10 Rdim=1 Set=j rng=Nodes!A1:A100 Rdim=1 Set=wt rng=Wetlands!A1:A100 Rdim=1 Set=dem rng=Demand!A1:A100 Rdim=1  set=NodeNotDemandSite  rng=NodesNotDemand!A1:A100 Rdim=1 set=NodeNotHeadwater  rng=NodeNotHeadwater!A1:A100 Rdim=1  Set=v rng=Reservoirs!A1:A100 Rdim=1 Set=rsi_indx rng=rsiIndex!A1:A10 Rdim=1  Set=fci_indx rng=fciIndex!A1:A10 Rdim=1 par=LinkID  rng=LinkName!A1 Rdim=2   par=rsi_par rng=rsiEQ!A1 Rdim=3 Cdim=1  par=fci_par rng=fciEQ!A1 Rdim=3 Cdim=1 par=envSiteExist rng=EnvSite!A1 Rdim=1 Cdim=1  par=DiversionExist rng=Diversions!A1 Rdim=1 Cdim=1   par=returnFlowExist rng=ReturnFlow!A1 Rdim=1 Cdim=1 par=WetlandsExist rng=WetlandsSites!A1 Rdim=1 Cdim=1 par=LinktoReservoir rng=LinktoReservoir!A1 Rdim=1 Cdim=1 par=LinkOutReservoir rng=LinkOutReservoir!A1 Rdim=1 Cdim=1   Set=RA_par_indx rng=R_indx!A1 Rdim=1  Set=sf_par_indx rng=sf_indx!A1:A10 Rdim=1  Set=wf_par_indx rng=wf_indx!A1:A10 Rdim=1 Set=wsi_par_indx rng=wsi_indx!A1:A10 Rdim=1 par=reachGain rng=HeadFlow!A1 Rdim=1 Cdim=1   par=wght rng=weights!A1 Cdim=1 Rdim=3  par=aw rng=AW!A1 Rdim=3  par=lss rng=lss!A1 Rdim=2 Cdim=1 par=evap rng=evap!A1 Rdim=1 Cdim=1  par=linkEvap  rng=linkEvap!A1  Rdim=2  Cdim=1  par=RA_par rng=ResElevVol!A1 Rdim=1 Cdim=1  par=Qsim  rng=QSim!A1 Rdim=2 Cdim=1   par=Qmin  rng=Qmin!A1 Rdim=2 Cdim=1  par=Qmax  rng=Qmax!A1 Rdim=2 Cdim=1  par=Cons rng=Cons!A1 Rdim=1 Cdim=1 par=lng rng=Length!A1 Rdim=2   par=minstor rng=inactive!A1 Rdim=1  par=maxstor rng=capacity!A1 Rdim=1  par=dReqBase rng=demandReq!A1 Rdim=1 Cdim=1 par=dCap rng=divCap!A1 Rdim=2  par=instreamReq   rng=Instream!A1 Rdim=2 Cdim=1  par=cst rng=UnitCost!A1 Rdim=1  par=Linkexist rng=Connect!A1 Rdim=1 Cdim=1  par=sf_par rng=StageFlow!A1 Rdim=2 Cdim=1 par=wf_par rng=WidthFlow!A1 Rdim=2 Cdim=1   par=wsi_par rng=wp!A1 Rdim=3 Cdim=1  par=b rng=Budget!A1 Rdim=0  par=rv rng=Revegetate!A1 Rdim=3 Cdim=1  par=InitSTOR rng=InStor!A1 Rdim=1   par=InitD rng=InitD!A1 Rdim=2  par=InitC rng=InitC!A1 Rdim=2  par=CMax   rng=MaxVegCover!A1 Rdim=3  Cdim=1 par=SimLink  rng=SimLinks!A1 Rdim=2  par=LinkExistSim   rng=Connect_sim!A1 Cdim=1  Rdim=1  set= MassBalanceNodes rng=MassBalanceNodes!A1  Rdim=1  Set=run  rng=Runs!A1 Rdim=1   par=DValue  rng=DemandRuns!A1  Rdim=1    set=Qrun  rng=Qrun!A1  Rdim=1   par=QLoop   rng=QRunValues!A1  Rdim=1  par=g rng=NaturalGrowth!A1  Rdim=3  Cdim=1
 
 *Write the input data into a GDX file
 $GDXIN WASH-Data.gdx
@@ -252,6 +251,7 @@ $LOAD fci_indx
 $LOAD rsi_par
 $LOAD fci_par
 $LOAD b
+$LOAD g
 $LOAD InitSTOR
 $LOAD InitD
 $LOAD InitC
@@ -279,7 +279,7 @@ Display LinktoReservoir, LinkOutReservoir, reachGain    ;
 Display aw, lss, evap, linkEvap, RA_par_indx, RA_par       ;
 Display cons,lng, minstor, maxstor, dReqBase, dCap, instreamReq, cst ;
 Display sf_par_indx, sf_par, wf_par_indx, wf_par, wsi_par_indx, wsi_par, rsi_indx;
-Display  fci_indx, fci_par, rsi_par, LinkID, Qmin, Qmax, QSim, CMax, SimLink, LinkExistSim, MassBalanceNodes ;
+Display  fci_indx, fci_par, rsi_par, LinkID, Qmin, Qmax, QSim, CMax, SimLink, LinkExistSim, MassBalanceNodes, g ;
 Display Run, DValue  ;
 Display Qrun, QLoop ;
 
@@ -333,7 +333,9 @@ D.UP(j,k,t)$envSiteExist(j,k) = 10;
 C.UP(j,k,t,n)$envSiteExist(j,k) = CMax(j,k,t,n);
 
 * Contraints on other variables
-Positive Variable  A, RV, WD, STOR, RA ;
+Positive Variable  A, RV, WD, STOR, RA;
+
+
 
 * To run the model as one instance without looping over demand  (comment out for demand loop)
 dReq(dem,t) =    dreqBase(dem,t) ;
@@ -370,10 +372,12 @@ EQUATIONS
 *-------------------
 *Model Constraints
 *-------------------
+
          EQ5(v,t)          Mass balance at reservoirs
          EQ5a(v,t)         Reservoir area-storage relationships
          EQ5b(v,t)         Reservoir releases equation that sums all flows leaving a reservoir
          EQ5c(v)           Storage balance for the last time step to be equal to inital storage
+         EQ5d(v,t)        Initilize reservoir storage
 
          EQ6(j,t)          Mass balance equations at each node   - applies to all sites except demand sites
          EQ7(dem,t)        Mass balance at demand sites
@@ -421,23 +425,25 @@ EQ4a(j,k,t)$(WetlandsExist(j,k) and wght("wetlands",j,k,t))..              wsi(j
 
 * Model Constraints
 
+
 EQ5(v,t)..                                    STOR(v,t+1) =e= InitSTOR(v)$(ord(t) eq 1)+ STOR(v,t)$(ord(t) gt 1)+sum (j$LinktoReservoir(j,v), Q(j,v,t)*(1-lss(j,v,t))) - RR(v,t) - (evap(v,t)*RA(v,t)) ;
-EQ5a(v,t)..                                   RA(v,t) =e= RA_par(v, "RA_par1") *(power(STOR(v,t),2)) +RA_par(v, "RA_par2")*STOR(v,t) + RA_par(v, "RA_par3")          ;
+
+EQ5a(v,t)..                                   RA(v,t) =e= RA_par(v, "RA_par1") *(STOR(v,t)**2) +RA_par(v, "RA_par2")*STOR(v,t) + RA_par(v, "RA_par3")          ;
 EQ5b(v,t)..                                   RR(v,t) =e= sum(j$LinkOutReservoir(v,j), Q(v,j,t) )  ;
 EQ5c(v)..                                     sum(t$(ord(t) eq card(t)),STOR(v,t)) =e= InitSTOR(v) ;
-
+EQ5d(v,t)..                                   STOR(v,t)$(ord(t) eq 1) =l= InitStor(v)  ;
 
 EQ6(j,t)$(MassBalanceNodes(j))..            reachGain(j,t) + sum(k$linkexist(k,j), (Q(k,j,t) * (1-lss(k,j,t)))) - sum(k$linkexist(k,j), (A(k,j,t) * linkEvap(k,j,t))) =g= sum (k$linkexist(j,k), Q(j,k,t))  ;
 
 EQ7(dem,t)..                                  sum (k$DiversionExist(k,dem),Q(k,dem,t) * (1-lss(k,dem,t))) - sum (k$DiversionExist(k,dem),Q(k,dem,t) * Cons(dem,t)) =g=  sum(k$returnFlowExist(dem,k), Q(dem,k,t))   ;
-EQ7a(dem,t)..                                  Shortage(dem,t) =e=  dReq(dem,t) - sum(k$linkexist(k,dem), Q(k,dem,t) ) ;
+EQ7a(dem,t)..                                  Shortage(dem,t) =e=  dReq(dem,t) - sum(k$linkexist(k,dem), Q  (k,dem,t) ) ;
 
 
 EQ8(j,k,t)$(envSiteExist(j,k) and (wght("riverine",j,k,t)) ) ..                D(j,k,t)=e= sf_par(j,k,"sf_par1")*Q(j,k,t) + sf_par(j,k,"sf_par2")                  ;
 EQ9(j,k,t)$(envSiteExist(j,k) and (wght("riverine",j,k,t)) )..                 WD(j,k,t) =e= wf_par(j,k,"wf_par1")+( Q(j,k,t)* (wf_par(j,k,"wf_par2") ) )            ;
 EQ10(j,k,t)$(envSiteExist(j,k) and (wght("riverine",j,k,t)) )..                A(j,k,t)=e= (WD(j,k,t)* lng(j,k)) / 1000000          ;
 
-EQ11(j,k,t,n)$envSiteExist(j,k)..             C(j,k,t,n) =e= InitC(j,k)$(ord(t) eq 1) + C(j,k,t-1,n)$(ord(t) gt 1) + RV(j,k,t,n)$(ord(t) gt 1)  ;
+EQ11(j,k,t,n)$envSiteExist(j,k)..             C(j,k,t,n) =e= InitC(j,k)$(ord(t) eq 1) + C(j,k,t-1,n)$(ord(t) gt 1) + RV(j,k,t,n)$(ord(t) gt 1) + g(j,k,t,n)$(ord(t) gt 1) ;
 
 EQ12(v,t)..                                   STOR(v,t) =g= minstor(v)                    ;
 EQ12a(v,t)..                                  STOR(v,t) =l= maxstor(v)                    ;
@@ -461,28 +467,35 @@ option limcol = 100000  ;
 *Control maximum running time (in seconds)
 option reslim = 100000  ;
 
+option optcr = 0 ;
 
 *Define the model and solve all equations listed above
 Model WASH /all/;
 
+* instruct BARON to return numsol solutions
+$onecho > baron.opt
+numsol 100
+gdxout multsol
+$offecho
+
+
 Solve WASH maximizing Z using NLP;
+
+
 
 FlowMarginal(j,t)  = EQ6.m(j,t) ;
 
+Display WASH.ModelStat, Z.L, WSI.L, W.L, FCI.L, F.L, RSI.L, R.L, Ind.L, D.l , Q.L, C.L, A.l, WD.L, RR.L, STOR.L, dreq, Shortage.L, RV.L, RA.L, evap, wght ;
 
-Display WASH.ModelStat, Z.L, WSI.L, W.L, FCI.L, F.L, RSI.L, R.L, Ind.L, D.l , Q.L, C.L, A.l, WD.L, RR.L, STOR.L, dreq,Shortage.L, RV.L, RA.L, evap ;
 
-
-*Execute_Unload "AnalysisCheck2.gdx", Z,Q,RR,STOR, RA,FlowMarginal   ;
-*Execute 'GDXXRW.EXE AnalysisCheck2.gdx var=Z  rng=Z!A1 var=Q rng=Q!A1  var=RR rng=RR!A1  var=STOR rng=STOR!A1 var=RA rng=RA!A1 par=FlowMarginal rng=FlowMarginal!A1      '             ;
 
 *OffText
 
 *=======================================================================
-* Solve the model and unload results to excel
+* Unload results to excel
 *=======================================================================
-*Execute_Unload "AllNetworkResults_Analysis.gdx", Z,Q,WSI,W,FCI,F,RSI,R, RR,STOR, FlowMarginal   ;
-*Execute 'GDXXRW.EXE AllNetworkResults_Analysis.gdx var=Z  rng=Z!A1    var=WSI  rng=WSI!A1  var=W rng=W!A1 var=FCI rng=FCI!A1 var=F rng=F!A1   var=RSI rng=RSI!A1  var=R  rng=R!A1   var=Q rng=Q!A1   var=RR rng=RR!A1  var=STOR rng=STOR!A1  par=FlowMarginal rng=FlowMarginal!A1       '             ;
+Execute_Unload "WASH_Results.gdx", Z,Q,WSI,W,FCI,F,RSI,R, RR,STOR, FlowMarginal, lng,WD.L,C.L, dReq     ;
+Execute 'GDXXRW.EXE WASH_Results.gdx var=Z  rng=Z!A1    var=WSI  rng=WSI!A1  var=W rng=W!A1 var=FCI rng=FCI!A1 var=F rng=F!A1   var=RSI rng=RSI!A1  var=R  rng=R!A1   var=Q rng=Q!A1   var=RR rng=RR!A1  var=STOR rng=STOR!A1  par=FlowMarginal rng=FlowMarginal!A1    par=lng rng=Length!A1 var=WD  rng=WD!A1 var=C  rng=C!A1   par=dReq  rng=demandReq!A1     '             ;
 
 
 *===============================================================================================
@@ -572,8 +585,8 @@ Loop (run2$FeasibleSol,
 
 *Write the tradeoff curve values to GDX and then Excel:
 
-Execute_Unload "Tradeoff_08292016.gdx", WASH_lp,dreq, SumDemand, DValue   ;
-Execute 'GDXXRW.EXE Tradeoff_08292016.gdx par=WASH_lp  rng=WASH!A1  par=DValue  rng=DValue!A1  par=SumDemand  rng=SumDemand!A1   '             ;
+Execute_Unload "WASH_Demand_Tradeoff.gdx", WASH_lp,dreq, SumDemand, DValue   ;
+Execute 'GDXXRW.EXE WASH_Demand_Tradeoff.gdx par=WASH_lp  rng=WASH!A1  par=DValue  rng=DValue!A1  par=SumDemand  rng=SumDemand!A1   '             ;
 
 $OffText
 
