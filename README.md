@@ -2,6 +2,10 @@
 
 Managing river systems necessarily requires an understanding of the interaction between stream ecology and hydrology. The suitability of a watershed physical habitat to support the livelihood and productivity of its biota primarily depends on managing flow. Habitat conservation and restoration efforts require an understanding and a measurement of the spatial and temporal ecological response to alterations in flow regimes. Managers use deterministic and qualitative measures such as habitat quality indexes to measure ecological response of particular species at certain locations and times to flow alterations. I propose improving habitat management decision-making by incorporating habitat quality indexes as objectives to maximize in a systems optimization model. This **Watershed Area of Suitable Habitat (WASH)** systems model uses habitat quality indexes to measure physically-available suitable habitat. WASH also adds spatial and temporal functionality to quality indexes to recommend environmental flows for riverine, floodplain and wetland habitats while maintaining water for human beneficial uses. WASH also highlights promising restoration and conservation sites. In addition, WASH proposes and ranks alternatives for managers to restore and protect natural habitat. WASH formulation is generic and adaptable to other regulated river systems and for species of concern. I apply the model to the Lower Bear River, Utah to guide existing habitat conservation efforts, recommend water allocation and show tradeoffs between human and habitat use of the available flow.
 
+
+![alt text](http://bearriverfellows.usu.edu/wash/WatershedHabiat "Watershed Habitat")
+**Figure 2**. River ecological habitat 
+
 ##Objectives of WASH
 * Quantify suitable habitat area within the watershed by embedding habitat quality indexes in a systems model, and
 * Identify strategies to allocate scare natural (e.g. water) and management (e.g. financial) resources to improve habitat quality.
@@ -20,7 +24,7 @@ WASH maximizes available and ecologically suitable area for species of concern b
 
 ![alt text](http://bearriverfellows.usu.edu/wash/ModelFormulation_Updated.jpg "Model Formulation")
 
-**Figure 1**. A flow diagram of the WASH systems model components that shows the decision and state variables, model parameters, suitability indexes, performance indicators, objective function and constraints 
+**Figure 2**. A flow diagram of the WASH systems model components that shows the decision and state variables, model parameters, suitability indexes, performance indicators, objective function and constraints 
 
 ##Instructions to Run WASH Model:
 1. Download and install [GAMS] (https://www.gams.com/) and [MS Excel] (https://products.office.com/en-us/excel) to run the WASH tool. You will need a license to run GAMS solvers.
