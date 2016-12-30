@@ -4,7 +4,7 @@ WASH model results are visually presented on an open-source GIS web app that rea
 ## Creating a webmap
 The following chart explains how the optimization model results were published into a web map
 
-![alt text](http://bearriverfellows.usu.edu/wash/WebMap.jpg "WebMap")
+![alt text](http://bearriverfellows.usu.edu/wash/WebMap_Flowchart.jpg "WebMap")
 
 
 ## To Access the map:
