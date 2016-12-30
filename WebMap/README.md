@@ -19,3 +19,4 @@ All you need is a web browser and internet connection. Click on this website (or
 6.	Click on the “Swipe” icon to activate the swipe option. Select a layer and swipe between it and the top layer in the layer list 
 
 
+ 
