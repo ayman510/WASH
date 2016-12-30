@@ -4,7 +4,7 @@ Managing river systems necessarily requires an understanding of the interaction 
 
 
 ![alt text](http://bearriverfellows.usu.edu/wash/WatershedHabitat.jpg "Watershed Habitat")
-**Figure 2**. River ecological habitat. Source: [Taylor 2008] (http://www.versicolor.ca/kerr/Tantramar/3_CreaturesOfTheSaltMarsh/Creatures.html)  
+**Figure 1**. River ecological habitat. Source: [Taylor 2008] (http://www.versicolor.ca/kerr/Tantramar/3_CreaturesOfTheSaltMarsh/Creatures.html)  
 
 ##Objectives of WASH
 * Quantify suitable habitat area within the watershed by embedding habitat quality indexes in a systems model, and
