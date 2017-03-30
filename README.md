@@ -4,7 +4,7 @@ Managing river systems necessarily requires an understanding of the interaction 
 
 
 ![alt text](http://bearriverfellows.usu.edu/wash/WatershedHabitat.jpg "Watershed Habitat")
-**Figure 1**. River ecological habitat. Source: [Taylor 2008] (http://www.versicolor.ca/kerr/Tantramar/3_CreaturesOfTheSaltMarsh/Creatures.html)  
+**Figure 1**. River ecological habitat. Source: [Taylor 2008](http://www.versicolor.ca/kerr/Tantramar/3_CreaturesOfTheSaltMarsh/Creatures.html)  
 
 ## Objectives of WASH
 * Quantify suitable habitat area within the watershed by embedding habitat quality indexes in a systems model, and
@@ -27,8 +27,8 @@ WASH maximizes available and ecologically suitable area for species of concern b
 **Figure 2**. A flow diagram of the WASH systems model components that shows the decision and state variables, model parameters, suitability indexes, performance indicators, objective function and constraints 
 
 ## Instructions to Run WASH Model:
-1. Download and install [GAMS] (https://www.gams.com/) and [MS Excel] (https://products.office.com/en-us/excel) to run the WASH tool. You will need a license to run GAMS solvers.
-2. Download the following files from the GitHub repository: [GAMS Code file] (https://github.com/ayman510/WASH/blob/master/CodeFiles/GAMS%20code), [WASH Input Data File] (https://github.com/ayman510/WASH/blob/master/InputData/WASH_InputData.xlsx), [WASH Output Data File] (https://github.com/ayman510/WASH/blob/master/OutputFiles/WASH_Results.xlsx)
+1. Download and install [GAMS](https://www.gams.com/) and [MS Excel](https://products.office.com/en-us/excel) to run the WASH tool. You will need a license to run GAMS solvers.
+2. Download the following files from the GitHub repository: [GAMS Code file](https://github.com/ayman510/WASH/blob/master/CodeFiles/GAMS%20code), [WASH Input Data File](https://github.com/ayman510/WASH/blob/master/InputData/WASH_InputData.xlsx), [WASH Output Data File](https://github.com/ayman510/WASH/blob/master/OutputFiles/WASH_Results.xlsx)
 3. Create a new folder on yoru machine and store the three files in the that folder.
 4. Open GAMS software. Go to File-> Project -> New Project. Navigate to the folder you created and create a new project file with any name you want. 
 5. In GAMS, go to File -> Open and open the GAMScode.gms file. Read through the introduction and instructions to learn how to edit the code.
