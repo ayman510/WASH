@@ -10,7 +10,7 @@ The following chart explains how the optimization model results were published i
 ## To Access the map:
 All you need is a web browser and internet connection. Click on this website (or type to your browser): www.WASHmap.usu.edu
 
-##Instructions: 
+## Instructions: 
 1.	Zoom out and familiarize yourself with the area. Then hit the home icon to go back to the original extent
 2.	Click on the “Legend” and the “Layer List” icons on the right and explore the map layers. 
 3.	In the Layer List, click on the small arrow next to any layer and explore the options. 
