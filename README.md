@@ -29,10 +29,10 @@ To improve river habitat quality, managers, first, identify watershed component 
 
 ## Instructions to Run WASH Model:
 1. Download and install [GAMS](https://www.gams.com/) V.24.2.3 and [MS Excel](https://products.office.com/en-us/excel) to run the WASH tool. You will need a license to run GAMS solvers.
-2. Download the following files from the GitHub repository: [GAMS Code file](https://github.com/ayman510/WASH/blob/master/CodeFiles/GAMS%20code), [WASH Input Data File](https://github.com/ayman510/WASH/blob/master/InputData/WASH_InputData.xlsx), [WASH Output Data File](https://github.com/ayman510/WASH/blob/master/OutputFiles/WASH_Results.xlsx)
+2. Download the following files from the GitHub repository: [GAMS Code file](https://github.com/ayman510/WASH/blob/master/Code/GAMScode.gms), [WASH Input Data File](https://github.com/ayman510/WASH/blob/master/InputData/WASH_1yr_InputData.xlsx), [WASH Output Data File](https://github.com/ayman510/WASH/blob/master/OutputFiles/WASH_1yr_OutputData.xlsx)
 3. Create a new folder on yoru machine and save the above three files there.
 4. Open GAMS software. Go to File-> Project -> New Project. Navigate to the folder you created and create a new project file with any name you want. 
-5. In GAMS, go to File -> Options -> Solver and select your Nonlinear Problem (NLP) solver. The results generated in this [Output Data File](https://github.com/ayman510/WASH/blob/master/OutputFiles/WASH_Results.xlsx) were obtained using BARON global optimal solver. 
+5. In GAMS, go to File -> Options -> Solver and select your Nonlinear Problem (NLP) solver. The results generated in this [Output Data File](https://github.com/ayman510/WASH/blob/master/OutputFiles/WASH_1yr_OutputData.xlsx) were obtained using BARON global optimal solver. 
 6. In GAMS, go to File -> Open and open the GAMScode.gms file. Read through the introduction and instructions to learn how to read and edit the code, if necessary.
 7. To edit the input data, open the Input Data Excel Spreadsheet using MS Excel. Refer to the first sheet of the Excel file for a detailed description of the accepted data values and units
 8. If applicable, change the name of the input data file in the code line: "$CALL GDXXRW.EXE input=InputData.xlsx" to your input data filename
