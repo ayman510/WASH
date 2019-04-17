@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1548390868636.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "700F3C7E",
+    "lastKnownWriteTime" : 19140779460001857,
+    "last_content_update" : 1548390868636,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "967A0A7B",
+        "caption" : "dfTotMarg",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=dfTotMarg&cache_key=967A0A7B",
+        "displayedObservations" : "12",
+        "environment" : "",
+        "object" : "dfTotMarg",
+        "preview" : "0",
+        "totalObservations" : "12",
+        "variables" : "2"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

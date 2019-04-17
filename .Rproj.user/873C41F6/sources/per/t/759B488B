@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1548280348218.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "237167716",
+    "id" : "759B488B",
+    "lastKnownWriteTime" : 1549181413,
+    "last_content_update" : 1549181413772,
+    "path" : "C:/Rosenberg/Work/USU/Classes/CEE6410/Fall2018/Homeworks/HW6-WASH/PlotWASHvegetation.R",
+    "project_path" : "PlotWASHvegetation.R",
+    "properties" : {
+        "cursorPosition" : "479,24",
+        "scrollLine" : "448"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

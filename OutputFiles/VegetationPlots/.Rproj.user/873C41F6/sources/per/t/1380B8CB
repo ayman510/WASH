@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1555096960759.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "581782794",
+    "id" : "1380B8CB",
+    "lastKnownWriteTime" : 1555110375,
+    "last_content_update" : 1555110375931,
+    "path" : "C:/Rosenberg/Work/USU/Research/CAREER/WASH-Model/OutputFiles/VegetationPlots/PlotWASHvegetation.R",
+    "project_path" : "PlotWASHvegetation.R",
+    "properties" : {
+        "cursorPosition" : "432,84",
+        "scrollLine" : "413"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
