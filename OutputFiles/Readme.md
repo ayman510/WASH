@@ -1,5 +1,47 @@
-This folder contains the output files of the WASH model which includes:
+To generate the figures in the result section (section 4) of the manuscript, the following files are used:
 
-1. WASH_Results.xlsx: The model output file. This file is developed to automatically update after every model run and generate new flow comparison and reservoir releases graphs. In addition, it arranges the data into new sheets ready to upload to a web map. 
-2. WASH_Demand_Tradeoff.xlsx: The model output file that plots the WASH and Huamn Demand tradeoff curve. 
+* Figure 4. Monthly suitable aquatic, floodplain, and wetland habitat areas:
+1. Copy the model output tables for R (aquatic habitat), F (floodplain habitat), and W (wetland habitat) areas to their corresponding sheets in the WASH_1yr_OutputData.xlsx file. 
+2. The figrue in the sheet "Habitat_tradeoff" will be automatically updated.
+
+* Figure 5. Comparison between model recommended and current reservoir releases:
+1. Copy the model output tables for RR (reservoir releases) into cells G3:G14 in sheet HydrumReservoirData in the HydrumReservoir_Results.xlsx file. 
+2. The figrue in the sheet "Releases" will be automatically updated.
+
+* Figure 6. Vegetation cover and planting area:
+1. Open the PlotWASHVegetation.R script
+2. Edit the script as needed to point the code to the GDX file for the WASH results
+3. Run the script to generate the figure
+
+* Figure 7. Model recommended improvements at the Bird Refuge:
+	
+	Figure 7a:
+
+1. Copy the model output tables for WSI (wetland suitability index) into sheet WSI in the WASH_1yr_OutputData.xlsx file.
+2. The Figure in WSI sheet will be updated using the simulated (pre-generated) data.
+
+
+	Figure 7b:
+
+1. Copy the model output tables for WASH (flow) into sheet Q in the WASH_1yr_OutputData.xlsx file.
+2. The Figure in Q_Analysis_Cfs sheet will be updated using the simulated (pre-generated) data and the water right data for the refuge.
+
+* Figure 8. Tradeoff between WASH suitable area and delievery targets:
+1. In the GAMS file, activate the code lines with the header: Create Figure  for WASH vs Demand Requirement by adding * before the "$OnText" and "$OffText" lines
+2. Run the script to generate a new GDX file and spreadsheet for the tradeoff data.
+3. Copy the WASH and dReq (for demand requirement) values into the WASH_1yr_Tradeoff_Output.xlsx spreadsheet.
+4. Figure 8 will be generated in the sheet: "Analysis"
+
+* Figure 9. Comparison of 5-year (2003-2007) optimization vs simulation results:
+1. In the GAMS file, use the Excel file "5yrs_InputData.xls" as the input file 
+2. Run the script to populate results for 5-years as GDX and Excel files.
+3. Copy the optimization results for R (suitable aquatic habitat area), RSI (aquatic habitat quality index), Q (flow) and RR (reservoir releases) for Hyrum only to their corresponding sheets. 
+4. Figure 9 will be generated in the sheet: "Plot"
+
+
+
+* Figure 10. VShadow values of the vegetation growth:
+1. Open the PlotWASHVegetation.R script
+2. Edit the script as needed to point the code to the GDX file for the WASH results
+3. Run the script to generate the figure
 
