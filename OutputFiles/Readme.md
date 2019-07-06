@@ -1,5 +1,19 @@
-To generate the figures in the result section (section 4) of the manuscript, the following files are used:
+This folder contains the output files of the WASH model which includes:
 
+1. WASH_1yr_OutputData.gdx : GAMS gdx file with all WASH model results for the single-year run. Generated when the model is run in GAMS.
+
+2. WASH_1yr_OutputData.xls : Excel version of the WASH model results in the gdx file.
+
+3. WASH_Results.xlsx: The model output file. This file is developed to automatically update after every model run and generate new flow comparison and reservoir releases graphs. In addition, it arranges the data into new sheets ready to upload to a web map. 
+
+4. WASH_Demand_Tradeoff.xlsx: The model output file that plots the WASH and Huamn Demand tradeoff curve. 
+
+5. WASH_5yr_OutputData.gdx : GAMS gdx file with all WASH model results for the five-year run. Generated when the model is run in GAMS.
+
+6. WASH_5yr_OutputData.xls : Excel version of the WASH model results in the gdx file.
+
+7. VegetationPlots : Folder with R files and results to produce figures 6 and 10 in the manuscript
+=======
 * Figure 4. Monthly suitable aquatic, floodplain, and wetland habitat areas:
 1. Copy the model output tables for R (aquatic habitat), F (floodplain habitat), and W (wetland habitat) areas to their corresponding sheets in the WASH_1yr_OutputData.xlsx file. 
 2. The figrue in the sheet "Habitat_tradeoff" will be automatically updated.
@@ -9,19 +23,19 @@ To generate the figures in the result section (section 4) of the manuscript, the
 2. The figrue in the sheet "Releases" will be automatically updated.
 
 * Figure 6. Vegetation cover and planting area:
-1. Open the PlotWASHVegetation.R script
+1. In the VegetationPlots subfolder, open the PlotWASHVegetation.R script
 2. Edit the script as needed to point the code to the GDX file for the WASH results
 3. Run the script to generate the figure
 
 * Figure 7. Model recommended improvements at the Bird Refuge:
 	
-	Figure 7a:
+Figure 7a:
 
 1. Copy the model output tables for WSI (wetland suitability index) into sheet WSI in the WASH_1yr_OutputData.xlsx file.
 2. The Figure in WSI sheet will be updated using the simulated (pre-generated) data.
 
 
-	Figure 7b:
+Figure 7b:
 
 1. Copy the model output tables for WASH (flow) into sheet Q in the WASH_1yr_OutputData.xlsx file.
 2. The Figure in Q_Analysis_Cfs sheet will be updated using the simulated (pre-generated) data and the water right data for the refuge.
@@ -38,10 +52,7 @@ To generate the figures in the result section (section 4) of the manuscript, the
 3. Copy the optimization results for R (suitable aquatic habitat area), RSI (aquatic habitat quality index), Q (flow) and RR (reservoir releases) for Hyrum only to their corresponding sheets. 
 4. Figure 9 will be generated in the sheet: "Plot"
 
-
-
-* Figure 10. VShadow values of the vegetation growth:
-1. Open the PlotWASHVegetation.R script
+* Figure 10. Shadow values of the vegetation growth:
+1. In the VegetationPlots subfolder, open the PlotWASHVegetation.R script
 2. Edit the script as needed to point the code to the GDX file for the WASH results
 3. Run the script to generate the figure
-

@@ -1,0 +1,77 @@
+# Plot Student Computing Experience as a stacked Bar Graph.
+# CEE 6490 
+#
+# David E. Rosenberg - 
+
+### Clear any existing data or functions.
+rm(list=ls())
+
+# Load packages needed to plot
+if (!require(reshape2)) { 
+  install.packages("reshape2", repos="http://cran.r-project.org") 
+  library(reshape2) 
+}
+
+if (!require(reshape2)) { 
+  install.packages("ggplot2", repos="http://cran.r-project.org") 
+  library(ggplot2) 
+}
+
+if (!require(dplyr)) { 
+  install.packages("dplyr", repos="http://cran.r-project.org") 
+  library(dplyr) 
+}
+
+if (!require(RColorBrewer)) { 
+  install.packages("RColorBrewer", repos="http://cran.r-project.org") 
+  library(RColorBrewer) 
+}
+
+
+# Read CSV into R
+dfStudentComputer <- read.csv(file="StudentComputerExperience.csv", 
+#JournalArticleData <- read.csv(file="RosenbergPubs.csv", 
+                               header=TRUE, 
+                               stringsAsFactors=FALSE,
+                               fileEncoding="UTF-8-BOM",
+                               sep=",")
+
+
+#Convert NAs to zeros
+dfStudentComputer[is.na(dfStudentComputer)] <- 0
+#Count number of rows (students) and columns (softwares)
+nCols = ncol(dfStudentComputer)
+nStuds = nrow(dfStudentComputer)
+#Count number of values in each column (number of students)
+SoftSums <- sum(dfStudentComputer[,c(3:nCols)])
+#Count number of students by department
+dfDepartmentCount <- dfStudentComputer %>%
+  group_by(Department) %>%
+  summarize(count=n())
+
+dfDepartmentCount$Dept <- paste(dfDepartmentCount$Department," (",dfDepartmentCount$count,")",sep = "")
+
+#Merge the data
+dfStudentComputer <- merge(dfStudentComputer,dfDepartmentCount,by=c("Department"), all.x=TRUE, sort=TRUE)
+
+#Melt the data
+dfStudentComputerMelt <- melt(subset(dfStudentComputer,select = -c(Department,count)),id.vars = c("Student","Dept"))
+
+SoftSums <- aggregate(dfStudentComputerMelt$value, by=list(Category=dfStudentComputerMelt$variable), FUN=sum)
+OrderedSums <- SoftSums[order(-SoftSums$x),]
+
+#Plot stacked barplot
+ggplot(dfStudentComputerMelt, aes(x= factor(variable, level = OrderedSums$Category),y=value,fill=Dept)) +
+  geom_bar(stat="identity") +
+  scale_y_continuous(breaks = seq(0,nStuds,3), limits = c(0,nStuds)) +
+  theme_bw() +
+  theme(legend.position = c(0.85,0.8), text = element_text(size=20), legend.text=element_text(size=16),
+        axis.text.x=element_text(angle=90,hjust=1,vjust=0.5),
+        legend.background = element_rect(colour = 'black', fill = 'white', 
+        linetype='solid')) +
+  
+  labs(x="", y="Students (Number)") +
+  theme(legend.title=element_blank())
+
+ggsave("StudentComputerSkills.png", width=9, height = 6.5, units="in")
+

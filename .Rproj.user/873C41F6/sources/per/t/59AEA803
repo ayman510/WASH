@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1548392997863.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "59AEA803",
+    "lastKnownWriteTime" : 7308604914264011873,
+    "last_content_update" : 1548392997863,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "39CA9900",
+        "caption" : "TotalCoverReveg",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=TotalCoverReveg&cache_key=39CA9900",
+        "displayedObservations" : "1849",
+        "environment" : "",
+        "object" : "TotalCoverReveg",
+        "preview" : "0",
+        "totalObservations" : "1849",
+        "variables" : "2"
+    },
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

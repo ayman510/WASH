@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1548396972914.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "7368D86",
+    "lastKnownWriteTime" : 30399585253589077,
+    "last_content_update" : 1548396972914,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "F60E0AC4",
+        "caption" : "NumReaches",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=NumReaches&cache_key=F60E0AC4",
+        "displayedObservations" : 1,
+        "environment" : "",
+        "object" : "NumReaches",
+        "preview" : 0,
+        "totalObservations" : 1,
+        "variables" : 1
+    },
+    "relative_order" : 10,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

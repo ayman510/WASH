@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1548960917457.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "355649727",
+    "id" : "1D298A53",
+    "lastKnownWriteTime" : 1548734553,
+    "last_content_update" : 1548734553,
+    "path" : "C:/Rosenberg/Work/USU/Classes/CEE6490/Spring2019/Admin/PlotStudentComputeExperience.r",
+    "project_path" : null,
+    "properties" : {
+        "cursorPosition" : "68,61",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 13,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
