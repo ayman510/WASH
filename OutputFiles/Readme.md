@@ -53,7 +53,7 @@ Figure 9. Comparison of 5-year (2003-2007) optimization vs simulation results:
 3. Copy the optimization results for R (suitable aquatic habitat area), RSI (aquatic habitat quality index), Q (flow) and RR (reservoir releases) for Hyrum only to their corresponding sheets. 
 4. Figure 9 will be generated in the sheet: "Plot"
 
-* Figure 10. Shadow values of the vegetation growth:
+Figure 10. Shadow values of the vegetation growth:
 1. In the VegetationPlots subfolder, open the PlotWASHVegetation.R script
 2. Repeat Figure 6, Instruction #2
 3. Run the script to generate the figure
