@@ -29,7 +29,7 @@ To improve river habitat quality, managers, first, identify watershed component 
 
 ## Explanations of Repository Contents
 1. [InputDataModel](https://github.com/ayman510/WASH/blob/master/InputDataModel/Readme.md) - Input data for GAMS model and R scripts to process input data
-2. [Manuscript](https://github.com/ayman510/WASH/blob/master/Manuscript/Readme.md) - Manuscript preprint for article
+2. [Documentation](https://github.com/ayman510/WASH/blob/master/Documentation/Readme.md) - Manuscript preprint for article with final results
 3. [OutputFiles](https://github.com/ayman510/WASH/blob/master/OutputFiles/Readme.md) - Model output files and scripts to process raw outputs and generate results including manuscript figures
 4. [WebMap](https://github.com/ayman510/WASH/blob/master/Webmap/Readme.md) - Explanation of WASH webmap application and instructions to use the webmap.
 
