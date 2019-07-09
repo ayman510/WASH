@@ -28,11 +28,11 @@ To improve river habitat quality, managers, first, identify watershed component 
 **Figure 2**. A flow diagram of the WASH systems model components that shows the decision and state variables, model parameters, suitability indexes, performance indicators, objective function and constraints 
 
 ## Explanations of Repository Contents
-1. [Code] (https://github.com/ayman510/WASH/blob/master/Code/Readme.md) - GAMS model code
-2. [InputDataModel] (https://github.com/ayman510/WASH/blob/master/InputDataModel/Readme.md) - Input data for GAMS model and R scripts to process input data
-3. [Manuscript] (https://github.com/ayman510/WASH/blob/master/Manuscript/Readme.md) - Manuscript preprint for article
-4. [OutputFiles] (https://github.com/ayman510/WASH/blob/master/OutputFiles/Readme.md) - Model output files and scripts to process raw outputs and generate results including manuscript figures
-5. [WebMap] (https://github.com/ayman510/WASH/blob/master/Webmap/Readme.md) - Explanation of WASH webmap application and instructions to use the webmap.
+1. [Code](https://github.com/ayman510/WASH/blob/master/Code/Readme.md) - GAMS model code
+2. [InputDataModel](https://github.com/ayman510/WASH/blob/master/InputDataModel/Readme.md) - Input data for GAMS model and R scripts to process input data
+3. [Manuscript](https://github.com/ayman510/WASH/blob/master/Manuscript/Readme.md) - Manuscript preprint for article
+4. [OutputFiles](https://github.com/ayman510/WASH/blob/master/OutputFiles/Readme.md) - Model output files and scripts to process raw outputs and generate results including manuscript figures
+5. [WebMap](https://github.com/ayman510/WASH/blob/master/Webmap/Readme.md) - Explanation of WASH webmap application and instructions to use the webmap.
 
 
 ## Instructions to Run WASH Model:
@@ -46,4 +46,4 @@ To improve river habitat quality, managers, first, identify watershed component 
 8. If applicable, change the name of the input data file in the code line: "$CALL GDXXRW.EXE input=InputData.xlsx" to your input data filename
 9. Run the code using the Run botton or File -> Run. The code runs successfully if you get the message "*** Normal Completion ***" in the generated listing file
 10. The model results are displayed on a listing file in GAMS. The results are also written to both GAMS Exchange (GDX) and Excel files. The downloaded output file: WASH_Results.xlsx will be updated with new results and will updated the graphs in the Excel file.
-11. See [OutputFiles](https://github.com/ayman510/WASH/blob/master/OutputFiles/Readme.md),  folder for further instructions to generate results shown in each manuscript figure.
+11. See [OutputFiles](https://github.com/ayman510/WASH/blob/master/OutputFiles/Readme.md) folder for further instructions to generate results shown in each manuscript figure.
