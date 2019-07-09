@@ -1,4 +1,4 @@
-TThis folder contains the following input data and GAMS model files:
+This folder contains the following input data and GAMS model files:
 
 ## Rscripts
 Folder with .csv files and R scripts (BCT_plots.R and Combined_BrownTrout.R) to preprocess and fit habitat suitability curves to data in the csv files.
