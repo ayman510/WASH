@@ -48,7 +48,7 @@ Figure 8. Tradeoff between WASH suitable area and delievery targets:
 4. Figure 8 will be generated in the sheet: "Analysis"
 
 Figure 9. Comparison of 5-year (2003-2007) optimization vs simulation results:
-1. In the WASH.gms GAMS file, on line XXX, set the Excel input file to be "5yrs_InputData.xls".
+1. In the WASH.gms GAMS file, on line 224, set the Excel input file to be "5yrs_InputData.xls".
 2. Run the script to populate results for 5-years as GDX and Excel files.
 3. Copy the optimization results for R (suitable aquatic habitat area), RSI (aquatic habitat quality index), Q (flow) and RR (reservoir releases) for Hyrum only to their corresponding sheets. 
 4. Figure 9 will be generated in the sheet: "Plot"
