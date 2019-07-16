@@ -12,9 +12,9 @@ This folder contains the output files of the WASH model.
 
 5. WASH_5yr_OutputData.gdx : GAMS gdx file with all WASH model results for the five-year run. Generated when the model is run in GAMS.
 
-6. WASH_5yr_OutputData.xls : Excel version of the WASH model results in the gdx file.
+6. WASH_5yr_Results.xlsx : Excel file for the WASH model results for 5 years.
 
-7. VegetationPlots : Folder with R files and results to produce figures 6 and 10 in the manuscript
+7. VegetationPlots : Folder with R files and results to produce figures 6 and 10 in the manuscript.
 
 ## To reproduce specific figures in the manuscript
 
