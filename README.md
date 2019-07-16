@@ -46,3 +46,7 @@ To improve river habitat quality, managers, first, identify watershed component 
 9. Run the code using the Run botton or File -> Run. The code runs successfully if you get the message "*** Normal Completion ***" in the generated listing file
 10. The model results are displayed on a listing file in GAMS. The results are also written to both GAMS Exchange (GDX) and Excel files. The downloaded output file: WASH_Results.xlsx will be updated with new results and will updated the graphs in the Excel file.
 11. See [OutputFiles](https://github.com/ayman510/WASH/blob/master/OutputFiles/Readme.md) folder for further instructions to generate results shown in each manuscript figure.
+
+
+## Recommended Citation
+Ayman Alafifi and David E. Rosenberg (2019). "Systems Modeling to Improve River, Riparian, and Wetland Habitat Quality and Area." Submitted to Environmental Modeling and Software. July 2019.
