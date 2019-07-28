@@ -42,10 +42,11 @@ Figure 7b:
 2. The Figure in Q_Analysis_Cfs sheet will be updated using the simulated (pre-generated) data and the water right data for the refuge.
 
 Figure 8. Tradeoff between WASH suitable area and delievery targets:
-1. Use the WASH_Figure8.gms GAMS file to generate the figure 
-2. Run the GAMS script to generate the WASH_Demand_Tradeoff.GDX file and spreadsheet for the tradeoff data.
-3. Copy the WASH and dReq (for demand requirement) values into the WASH_1yr_Tradeoff_Output.xlsx spreadsheet.
-4. Figure 8 will be generated in the sheet: "Analysis"
+1. Go to the Tradeoff_Figure folder 
+2. Use the WASH_Figure8.gms GAMS file to generate the figure 
+3. Run the GAMS script to generate the WASH_Demand_Tradeoff.GDX file and spreadsheet for the tradeoff data.
+4. Copy the WASH and dReq (for demand requirement) values into the WASH_1yr_Tradeoff_Output.xlsx spreadsheet.
+5. Figure 8 will be generated in the sheet: "Analysis"
 
 Figure 9. Comparison of 5-year (2003-2007) optimization vs simulation results:
 1. In the WASH.gms GAMS file, on line 224, set the Excel input file to be "5yrs_InputData.xls".
