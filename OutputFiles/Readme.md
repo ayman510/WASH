@@ -14,7 +14,9 @@ This folder contains the output files of the WASH model.
 
 6. WASH_5yr_Results.xlsx : Excel file for the WASH model results for 5 years.
 
-7. VegetationPlots : Folder with R files and results to produce figures 6 and 10 in the manuscript.
+7. HyrumReservoir_Results.xlsx: Excel file to plot the results of Hyrum Reservoir.
+
+8. VegetationPlots : Folder with R files and results to produce figures 6 and 10 in the manuscript.
 
 ## To reproduce specific figures in the manuscript
 
@@ -23,7 +25,7 @@ Figure 4. Monthly suitable aquatic, floodplain, and wetland habitat areas:
 2. The figure in the sheet "Habitat_tradeoff" will be automatically updated.
 
 Figure 5. Comparison between model recommended and current reservoir releases:
-1. Copy the model output tables for RR (reservoir releases) into cells G3:G14 in sheet HydrumReservoirData in the HydrumReservoir_Results.xlsx file. 
+1. Copy the model output tables for RR (reservoir releases) into cells G3:G14 in sheet HydrumReservoirData in the HyrumReservoir_Results.xlsx file. 
 2. The figrue in the sheet "Releases" will be automatically updated.
 
 Figure 6. Vegetation cover and planting area:
