@@ -47,9 +47,7 @@ PlaneRownr=-1
 
 [OPENWINDOW_1]
 FILE0=C:\Rosenberg\Work\USU\Classes\CEE6490\Spring2019\StudentWork\Project\ScratchWork\HadiaMoazzam\HP_Opt_1.gms
-FILE1=C:\Rosenberg\Work\USU\Research\CAREER\WASH-Model\InputDataModel\WASH.gms
-FILE2=C:\Rosenberg\Work\USU\Research\CAREER\WASH-Model\InputDataModel\WASH.lst
-FILE3=C:\Rosenberg\Work\USU\Classes\CEE6490\Spring2019\StudentWork\Project\ScratchWork\HadiaMoazzam\HP_Opt_1.gms
+FILE1=C:\Rosenberg\Work\USU\Classes\CEE6490\Spring2019\StudentWork\Project\ScratchWork\HadiaMoazzam\HP_Opt_1.gms
 MAXIM=0
 TOP=0
 LEFT=0

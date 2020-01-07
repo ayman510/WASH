@@ -1,0 +1,55 @@
+[PROJECT]
+
+[RP:HP_OPT_1]
+1=
+
+[GDXDISP: C Var 4]
+PlaneDim=0
+RowDim=4
+Squeeze=1
+Order=1,2,3,4,5
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: Q Var 3]
+PlaneDim=0
+RowDim=3
+Squeeze=1
+Order=1,2,3,4
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: STOR Var 2]
+PlaneDim=0
+RowDim=1
+Squeeze=1
+Order=1,2,3
+Decim=7
+PlaneRownr=-1
+
+[GDXDISP: RR Var 2]
+PlaneDim=0
+RowDim=1
+Squeeze=1
+Order=1,2,3
+Decim=7
+PlaneRownr=-1
+
+[RP:JUNE_2018 -2PERIODS(0-8&8-0)]
+1=
+
+[RP:WASH]
+1=
+
+[MRUFILES]
+1=C:\Rosenberg\Work\USU\Research\CAREER\WASH-Model\August2019\WASH\InputDataModel\WASH.gms
+2=C:\Rosenberg\Work\USU\Students\RindMoazzam\Repositories\June_2018 -2periods(0-8&8-0).gms
+
+[OPENWINDOW_1]
+FILE0=C:\Rosenberg\Work\USU\Research\CAREER\WASH-Model\August2019\5yrs_Sim_Results.gdx
+FILE1=C:\Rosenberg\Work\USU\Research\CAREER\WASH-Model\August2019\5yrs_Sim_Results.gdx
+MAXIM=1
+TOP=50
+LEFT=50
+HEIGHT=400
+WIDTH=400

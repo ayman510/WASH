@@ -173,8 +173,13 @@ dfResults <- merge(dfResults,dfQflow[,c("j","k","t","Qflow")],by=c("j","k","t"),
 # Merge on Names to give a full reach name for the form River: Start to Finish
 dfResults <- merge(dfResults,dfNodeNames, by=c("j"), all.x = TRUE, sort=TRUE)
 dfResults <- merge(dfResults,dfNodeNames, by.x = "k", by.y="j", all.x = TRUE, sort=TRUE)
-dfResults$River.x.break <- paste(dfResults$River.x, "River\n", sep=" ")
-dfResults$River.x <- paste(dfResults$River.x, "River:", sep=" ")
+#dfResults$River.x.break <- paste(dfResults$River.x, "River\n", sep=" ")
+#dfResults$River.x <- paste(dfResults$River.x, "River:", sep=" ")
+
+#Without "River"
+dfResults$River.x.break <- paste(dfResults$River.x, "\n", sep="")
+dfResults$River.x <- paste(dfResults$River.x, ":", sep="")
+
 dfResults$NodeName.x <- paste(dfResults$NodeName.x, "to", sep=" ")
 # Node abbreviations
 dfResults$reachAbr <- do.call(paste, c(dfResults[c("j","k")],sep = " to "))
@@ -329,12 +334,12 @@ ggplot(dfPlotData, aes(x=t,y=value,fill=reach)) +
   #scale_fill_manual(values = getPalette(colorCount)) +
   scale_fill_manual(values = cPalComb) +
   scale_x_discrete(labels= cMonthsLabels) +
-  theme(legend.position = c(0.75,0.7), text = element_text(size=20), legend.text=element_text(size=12), legend.background = element_rect(colour = 'black', fill = 'white', linetype='solid')) +
+  theme(legend.position = c(0.72,0.70), text = element_text(size=18), legend.text=element_text(size=11), legend.background = element_rect(colour = 'black', fill = 'white', linetype='solid')) +
   #labs(x="", y=bquote('Shadow value\n(Suitable area [' ~ Mm^2* ~ '] per Vegetated area [' ~ Mm^2* ~ '])'), fill="Reach")
   labs(x="", y='Shadow value\n(Suitable area per Vegetated area)', fill="River (color) and Reach (color intensity)")
 
-ggsave("Fig10_MargVegValues.png", width=9, height = 6.5, units="in")
-ggsave("Fig10_MargVegValues.pdf", width=9, height = 6.5, units="in")
+ggsave("Fig10_MargVegValues.png", width=10, height = 8.5, units="in")
+ggsave("Fig10_MargVegValues.pdf", width=10, height = 8.5, units="in")
 
 ############ END FIGURE 10 ###############
 
